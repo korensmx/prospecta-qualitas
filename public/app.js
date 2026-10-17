@@ -103,10 +103,10 @@ async function loadStats() {
     const data = await res.json();
     if (data.success) {
       document.getElementById('kpiTotalProspectos').textContent = data.total.toLocaleString();
-      document.getElementById('kpiTotalVehiculos').textContent = data.vehiculos.toLocaleString() + ' uds';
-      document.getElementById('kpiTotalEmpleados').textContent = data.empleados.toLocaleString();
-      document.getElementById('kpiPrimaEstimada').textContent = '$' + (data.primaTotal / 1000000).toFixed(1) + 'M MXN';
-      document.getElementById('kpiTasaGestion').textContent = data.tasaGestion + '%';
+      document.getElementById('kpiTotalVehiculos').textContent = (data.totalVehiculos || 0).toLocaleString() + ' uds';
+      document.getElementById('kpiTotalEmpleados').textContent = (data.totalEmpleados || 0).toLocaleString();
+      document.getElementById('kpiPrimaEstimada').textContent = '$' + ((data.totalPrimaPotencial || 0) / 1000000).toFixed(1) + 'M MXN';
+      document.getElementById('kpiTasaGestion').textContent = (data.tasaGestion || 0) + '%';
     }
   } catch (err) {
     console.error('Error al cargar estadísticas:', err);

@@ -11,32 +11,32 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Keys supplied by user
+// API keys from environment variables (NEVER hardcode in source)
 const AI_CONFIG = {
   gemini: {
     name: 'Google Gemini',
-    key: 'AQ.Ab8RN6LpCB5LmIB1wv1bbZ3zmXwJ1pvzaHPA9KsTHzZ0SgoUQg',
-    models: ['gemini-3.5-flash-lite', 'gemini-3.5-flash', 'gemini-flash-latest']
+    key: process.env.GEMINI_API_KEY || '',
+    models: ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-2.0-flash-exp']
   },
   groq: {
     name: 'Groq Cloud',
-    key: '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',
-    models: ['openai/gpt-oss-120b', 'openai/gpt-oss-20b', 'qwen/qwen3.8-27b']
+    key: process.env.GROQ_API_KEY || '',
+    models: ['llama-3.3-70b-versatile', 'llama-3.1-70b-versatile', 'mixtral-8x7b-32768']
   },
   openrouter: {
     name: 'OpenRouter',
-    key: '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',
-    models: ['nvidia/nemotron-3.5-lightning:free', 'liquid/lfm-2.5-2.6b:free', 'google/gemma-4-26b-a4b-it:free']
+    key: process.env.OPENROUTER_API_KEY || '',
+    models: ['google/gemma-2-9b-it:free', 'mistralai/mistral-7b-instruct:free', 'meta-llama/llama-3.2-3b-instruct:free']
   },
   sambanova: {
     name: 'SambaNova',
-    key: 'e32f78db-aa8c-4bcd-bc31-c996d04aa95c',
-    models: ['Meta-Llama-3.3-70B-Instruct', 'DeepSeek-V3.2', 'gemma-4-31B-it']
+    key: process.env.SAMBANOVA_API_KEY || '',
+    models: ['Meta-Llama-3.3-70B-Instruct', 'Meta-Llama-3.1-405B-Instruct', 'DeepSeek-R1']
   },
   nvidia: {
     name: 'Build NVIDIA',
-    key: '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',
-    models: ['deepseek-ai/deepseek-v4.1-flash', 'ai21labs/jamba-1.5-large-instruct']
+    key: process.env.NVIDIA_API_KEY || '',
+    models: ['meta/llama-3.3-70b-instruct', 'nvidia/llama-3.1-nemotron-70b-instruct', 'mistralai/mistral-7b-instruct-v0.3']
   }
 };
 
@@ -83,6 +83,21 @@ function saveProspects(data) {
     console.warn('Note: File write bypassed or failed (read-only serverless environment). Data preserved in memory.');
     return true;
   }
+}
+
+// Sync a single prospect to Google Sheets via n8n webhook (Portal → Sheets)
+async function syncToN8n(prospect) {
+  const N8N_WEBHOOK = 'https://n8n.korensmx.com/webhook/prospecta-sync';
+  const response = await fetch(N8N_WEBHOOK, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prospecto: prospect, timestamp: new Date().toISOString() }),
+    signal: AbortSignal.timeout(8000)
+  });
+  if (!response.ok) {
+    throw new Error(`n8n responded ${response.status}`);
+  }
+  return response.json();
 }
 
 // AI Provider Callers with Timeout
@@ -357,6 +372,12 @@ app.put('/api/prospects/:id', (req, res) => {
 
   prospects[idx] = { ...prospects[idx], ...req.body };
   saveProspects(prospects);
+
+  // Sync to Google Sheets via n8n (fire-and-forget, no await)
+  syncToN8n(prospects[idx]).catch(err =>
+    console.warn('[n8n sync] PUT failed:', err.message)
+  );
+
   res.json({ success: true, data: prospects[idx] });
 });
 
@@ -377,6 +398,12 @@ app.post('/api/prospects/:id/notes', (req, res) => {
   prospects[idx].notas.unshift(note);
   prospects[idx].fechaUltimoContacto = new Date().toISOString().split('T')[0];
   saveProspects(prospects);
+
+  // Sync to Google Sheets via n8n (fire-and-forget, no await)
+  syncToN8n(prospects[idx]).catch(err =>
+    console.warn('[n8n sync] Notes POST failed:', err.message)
+  );
+
   res.json({ success: true, data: prospects[idx] });
 });
 

@@ -103,9 +103,9 @@ async function loadStats() {
     const data = await res.json();
     if (data.success) {
       document.getElementById('kpiTotalProspectos').textContent = data.total.toLocaleString();
-      document.getElementById('kpiTotalVehiculos').textContent = data.totalVehiculos.toLocaleString() + ' uds';
-      document.getElementById('kpiTotalEmpleados').textContent = data.totalEmpleados.toLocaleString();
-      document.getElementById('kpiPrimaEstimada').textContent = '$' + (data.totalPrimaPotencial / 1000000).toFixed(1) + 'M MXN';
+      document.getElementById('kpiTotalVehiculos').textContent = data.vehiculos.toLocaleString() + ' uds';
+      document.getElementById('kpiTotalEmpleados').textContent = data.empleados.toLocaleString();
+      document.getElementById('kpiPrimaEstimada').textContent = '$' + (data.primaTotal / 1000000).toFixed(1) + 'M MXN';
       document.getElementById('kpiTasaGestion').textContent = data.tasaGestion + '%';
     }
   } catch (err) {

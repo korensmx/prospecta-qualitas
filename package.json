@@ -1,0 +1,25 @@
+{
+  "name": "qualitas-prospector-norte",
+  "version": "1.0.0",
+  "description": "Sistema Inteligente de Prospección Comercial de Flotillas y Colectividades Quálitas Compañía de Seguros para la Zona Norte de México con Cascada Multi-IA",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "keywords": [
+    "qualitas",
+    "seguros",
+    "prospeccion",
+    "flotillas",
+    "colectividades",
+    "ia",
+    "n8n"
+  ],
+  "author": "Quálitas Compañía de Seguros",
+  "license": "ISC"
+}

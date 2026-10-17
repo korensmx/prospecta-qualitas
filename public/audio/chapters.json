@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "title": "Bienvenida e Introducción",
+    "text": "¡Hola! Te damos la más cordial bienvenida a tu Portal de Prospección Comercial de Quálitas Compañía de Seguros. Si eres nuevo utilizando esta herramienta, no te preocupes. Este video fue creado especialmente para ti. Aquí aprenderás, paso a paso y de forma muy sencilla, cómo encontrar empresas grandes, universidades y sindicatos en el norte del país para ofrecerles seguros de flotilla y colectividades para empleados.",
+    "duration": 27.766259,
+    "start": 0
+  },
+  {
+    "id": 2,
+    "title": "El Tablero Principal y las Métricas Clave",
+    "text": "Al entrar a la aplicación, lo primero que verás arriba son cinco tarjetas con números grandes. Estas tarjetas te muestran el panorama general: cuántos prospectos tienes listos para contactar, cuántos vehículos y empleados suman en total, y el valor estimado de prima anual que podrías colocar. Lo mejor de todo es que estos números se actualizan solitos cada vez que aplicas un filtro.",
+    "duration": 24.686077,
+    "start": 27.766259
+  },
+  {
+    "id": 3,
+    "title": "Cómo Filtrar Negocios Fácilmente",
+    "text": "Buscar exactamente lo que necesitas es facilísimo. En la barra de filtros puedes elegir cualquiera de los ocho estados del norte: Baja California, Baja California Sur, Sonora, Chihuahua, Coahuila, Durango, Nuevo León o Tamaulipas. También puedes filtrar por ciudad o por giro, como maquiladoras, minería o transporte. Si quieres empezar de nuevo, solo dale clic a Limpiar Filtros.",
+    "duration": 26.618413,
+    "start": 52.452336
+  },
+  {
+    "id": 4,
+    "title": "La Ficha del Prospecto y sus Datos",
+    "text": "En la tabla verás la información completa de cada empresa: su nombre comercial, dirección, número de empleados y cuántos vehículos tienen. Lo más valioso para ti es la columna de Responsables: ahí encuentras el nombre del director o gerente de recursos humanos o compras, junto con su correo electrónico y teléfono directo.",
+    "duration": 20.543764,
+    "start": 79.070749
+  },
+  {
+    "id": 5,
+    "title": "El Redactor de Correos con Inteligencia Artificial",
+    "text": "¿No sabes qué escribir para presentarte? Nuestra Inteligencia Artificial lo hace por ti. Solo haz clic en el botón morado con forma de sobre. Se abrirá una ventana donde puedes elegir el tono del mensaje: un saludo ejecutivo para pedir una cita de quince minutos, un enfoque financiero de ahorro y deducibilidad fiscal, o un beneficio de seguro con descuento vía nómina para los empleados. El correo suena totalmente humano y profesional. Puedes copiarlo o abrirlo directo en tu correo o en WhatsApp con un solo clic.",
+    "duration": 32.917098,
+    "start": 99.614513
+  },
+  {
+    "id": 6,
+    "title": "Gestión y Registro de Bitácora",
+    "text": "Cuando llames a un prospecto o le mandes un correo, no olvides registrarlo. Haz clic en la etiqueta de estado o en el botón de libreta. Podrás cambiar el estado de Nuevo Prospecto a Contactado, Cita Agendada o En Cotización, y escribir notas sobre lo que platicaron. Así nunca olvidarás en qué te quedaste.",
+    "duration": 19.500771,
+    "start": 132.531611
+  },
+  {
+    "id": 7,
+    "title": "Buscar Prospectos con IA y Exportar a Excel",
+    "text": "Si necesitas más prospectos frescos, haz clic en el botón morado Buscar Prospectos con IA. El sistema buscará en cascada utilizando cinco inteligencias artificiales para traerte empresas calificadas que cumplan todas las reglas de Quálitas. Y cuando quieras llevarte la lista para trabajar en campo, solo presiona Exportar Excel para descargar un archivo listo para abrir. ¡Mucho éxito en tus ventas con Quálitas Compañía de Seguros!",
+    "duration": 28.299093,
+    "start": 152.03238199999998
+  }
+]

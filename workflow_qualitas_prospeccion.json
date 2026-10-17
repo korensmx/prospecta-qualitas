@@ -1,0 +1,141 @@
+{
+  "name": "Quálitas - Prospección Semanal Automatizada (Zona Norte)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtHour": 8,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "id": "node-schedule-weekly",
+      "name": "Disparador Semanal (Lunes 8:00 AM)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Selecciona el estado objetivo de la semana y configura criterios de búsqueda\nconst estadosNorte = [\n  'Baja California',\n  'Baja California Sur',\n  'Sonora',\n  'Chihuahua',\n  'Coahuila',\n  'Durango',\n  'Nuevo León',\n  'Tamaulipas'\n];\n\nconst girosObjetivo = [\n  'Manufactura y Maquiladoras',\n  'Transporte Terrestre y Flotillas de Carga',\n  'Minería y Metalurgia',\n  'Sindicatos Industriales y de la Transformación',\n  'Universidades e Institutos Tecnológicos',\n  'Agroindustria y Distribución'\n];\n\n// Rotación por semana del año\nconst weekNumber = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 1)) / (7 * 24 * 60 * 60 * 1000));\nconst estadoSeleccionado = estadosNorte[weekNumber % estadosNorte.length];\nconst giroSeleccionado = girosObjetivo[weekNumber % girosObjetivo.length];\n\nreturn [\n  {\n    json: {\n      estado: estadoSeleccionado,\n      giro: giroSeleccionado,\n      cantidad: 5,\n      timestamp: new Date().toISOString(),\n      reglas: {\n        minimoEmpleados: 50,\n        minimoFlotilla: 20,\n        excluir: ['maestros', 'snte', 'cnte', 'telefonistas', 'strm']\n      }\n    }\n  }\n];"
+      },
+      "id": "node-setup-criteria",
+      "name": "Configurador de Criterios y Estados Quálitas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://prospecta-qualitas.vercel.app/api/generate-prospects",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"estado\": \"{{ $json.estado }}\",\n  \"giro\": \"{{ $json.giro }}\",\n  \"count\": {{ $json.cantidad }}\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "node-ai-cascade-request",
+      "name": "Consulta Cascada Multi-IA Quálitas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Auditoría y Validación de Calificación de Suscripción Quálitas\nconst response = $input.first().json;\n\nif (!response.success || !response.data) {\n  throw new Error('La consulta de IA no devolvió datos exitosos');\n}\n\nconst items = response.data;\nconst validados = [];\n\nfor (const p of items) {\n  const textoCompleto = `${p.razonSocial} ${p.giro} ${p.responsables?.[0]?.cargo || ''}`.toLowerCase();\n  \n  // 1. REGLA OBLIGATORIA: Excluir sindicatos de maestros y telefonistas\n  if (\n    textoCompleto.includes('maestro') ||\n    textoCompleto.includes('snte') ||\n    textoCompleto.includes('cnte') ||\n    textoCompleto.includes('telefonista') ||\n    textoCompleto.includes('strm')\n  ) {\n    continue;\n  }\n\n  // 2. REGLA OBLIGATORIA: >50 empleados O >20 vehículos\n  const numEmp = parseInt(p.numeroEmpleados || 0, 10);\n  const numVeh = parseInt(p.numeroVehiculos || 0, 10);\n  \n  if (numEmp >= 50 || numVeh >= 20 || textoCompleto.includes('sindicato') || textoCompleto.includes('universidad')) {\n    validados.push({\n      ...p,\n      fuente: 'Flujo n8n Semanal Automatizado',\n      fechaValidacion: new Date().toISOString()\n    });\n  }\n}\n\nreturn [\n  {\n    json: {\n      validados,\n      totalAprobados: validados.length,\n      proveedorUsado: response.providerUsed,\n      modeloUsado: response.modelUsed,\n      latenciaMs: response.latencyMs\n    }\n  }\n];"
+      },
+      "id": "node-validate-subscription",
+      "name": "Auditoría de Reglas de Suscripción",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://prospecta-qualitas.vercel.app/api/webhook/n8n",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.validados }}",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "node-ingest-prospects",
+      "name": "Inyección Automática a Base de Datos Quálitas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Disparador Semanal (Lunes 8:00 AM)": {
+      "main": [
+        [
+          {
+            "node": "Configurador de Criterios y Estados Quálitas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configurador de Criterios y Estados Quálitas": {
+      "main": [
+        [
+          {
+            "node": "Consulta Cascada Multi-IA Quálitas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulta Cascada Multi-IA Quálitas": {
+      "main": [
+        [
+          {
+            "node": "Auditoría de Reglas de Suscripción",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auditoría de Reglas de Suscripción": {
+      "main": [
+        [
+          {
+            "node": "Inyección Automática a Base de Datos Quálitas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

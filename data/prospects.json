@@ -1,0 +1,916 @@
+[
+  {
+    "id": "PROSP-SON-360140",
+    "razonSocial": "Transportes Pitic, S.A. de C.V.",
+    "nombreComercial": "Autotransportes Pitic",
+    "giro": "Minería y Logística",
+    "numeroEmpleados": 850,
+    "numeroVehiculos": 400,
+    "estado": "Sonora",
+    "ciudad": "Hermosillo",
+    "domicilio": "Blvd. Solidaridad Final S/N, Parque Industrial, C.P. 83299",
+    "telefonos": "+52 (662) 259-7500",
+    "correo": "flotilla@transportespitic.com",
+    "responsables": [
+      {
+        "nombre": "Lic. Ana Karen Valenzuela Soto",
+        "cargo": "Directora de Operaciones y Flotilla",
+        "correo": "flotilla@transportespitic.com",
+        "telefono": "+52 (662) 259-7500"
+      }
+    ],
+    "tipoOportunidad": "Flotilla Comercial",
+    "potencialPrimaEstimada": 6620000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-17",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-24",
+    "notas": [
+      {
+        "fecha": "2026-10-17",
+        "usuario": "IA Gemini",
+        "texto": "Flotilla pesada de cobertura nacional con base en Sonora que requiere esquemas competitivos de daños materiales y gastos médicos para operadores."
+      }
+    ],
+    "fuente": "IA Cascada (Gemini)"
+  },
+  {
+    "id": "PROSP-SON-360181",
+    "razonSocial": "Minera Penmont, S. de R.L. de C.V.",
+    "nombreComercial": "Minera Penmont (La Herradura)",
+    "giro": "Minería y Logística",
+    "numeroEmpleados": 1200,
+    "numeroVehiculos": 150,
+    "estado": "Sonora",
+    "ciudad": "Caborca",
+    "domicilio": "Carretera Caborca-Puerto Peñasco Km 35, C.P. 83600",
+    "telefonos": "+52 (637) 372-9000",
+    "correo": "contacto.penmont@fresnilloplc.com",
+    "responsables": [
+      {
+        "nombre": "Ing. Roberto Garza Martínez",
+        "cargo": "Gerente de Logística y Transporte",
+        "correo": "contacto.penmont@fresnilloplc.com",
+        "telefono": "+52 (637) 372-9000"
+      }
+    ],
+    "tipoOportunidad": "Mixto (Flotilla + Colectividad)",
+    "potencialPrimaEstimada": 3540000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-17",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-24",
+    "notas": [
+      {
+        "fecha": "2026-10-17",
+        "usuario": "IA Gemini",
+        "texto": "Operación minera masiva con alta demanda en protección vehicular utilitaria y seguros de vida para personal en zona remota."
+      }
+    ],
+    "fuente": "IA Cascada (Gemini)"
+  },
+  {
+    "id": "PROSP-NL-001",
+    "razonSocial": "Ternium México, S.A. de C.V.",
+    "nombreComercial": "Ternium México",
+    "giro": "Siderurgia y Manufactura Pesada",
+    "numeroEmpleados": 9800,
+    "numeroVehiculos": 180,
+    "estado": "Nuevo León",
+    "ciudad": "San Nicolás de los Garza",
+    "domicilio": "Av. Manuel L. Barragán 333, Col. Residencial Anáhuac, C.P. 66450",
+    "telefonos": "+52 (81) 8865-2000 / +52 (81) 8865-2410",
+    "correo": "recursos.humanos@ternium.com.mx",
+    "responsables": [
+      {
+        "nombre": "Lic. Mauricio Garza Santos",
+        "cargo": "Director de Compensaciones y Beneficios",
+        "correo": "mgarza@ternium.com.mx",
+        "telefono": "+52 (81) 8865-2105"
+      },
+      {
+        "nombre": "Ing. Fernando Morales Téllez",
+        "cargo": "Gerente de Servicios Generales y Flotillas",
+        "correo": "fmorales@ternium.com.mx",
+        "telefono": "+52 (81) 8865-2412"
+      }
+    ],
+    "tipoOportunidad": "Mixto (Flotilla + Colectividad)",
+    "potencialPrimaEstimada": 8750000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-10",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-20",
+    "notas": [
+      {
+        "fecha": "2026-10-10",
+        "usuario": "Sistema Quálitas",
+        "texto": "Prospecto calificado por perfil de más de 9,000 empleados y flotilla corporativa de 180 unidades utilitarias."
+      }
+    ],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-NL-002",
+    "razonSocial": "Arca Continental, S.A.B. de C.V.",
+    "nombreComercial": "Arca Continental / Coca-Cola",
+    "giro": "Embotellado y Distribución Comercial",
+    "numeroEmpleados": 14200,
+    "numeroVehiculos": 620,
+    "estado": "Nuevo León",
+    "ciudad": "Monterrey",
+    "domicilio": "Av. San Jerónimo 813 Pte., Col. San Jerónimo, C.P. 64640",
+    "telefonos": "+52 (81) 8151-1400 / +52 (81) 8151-1550",
+    "correo": "contacto.corporativo@arcacontal.com",
+    "responsables": [
+      {
+        "nombre": "Lic. Marcela Villarreal Benavides",
+        "cargo": "Directora de Gestión de Talento y Beneficios",
+        "correo": "mvillarreal@arcacontal.com",
+        "telefono": "+52 (81) 8151-1430"
+      },
+      {
+        "nombre": "Ing. Alberto Cárdenas Cavazos",
+        "cargo": "Director de Logística y Transporte Comercial",
+        "correo": "acardenas@arcacontal.com",
+        "telefono": "+52 (81) 8151-1602"
+      }
+    ],
+    "tipoOportunidad": "Flotilla Comercial",
+    "potencialPrimaEstimada": 12500000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-08",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-22",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-NL-003",
+    "razonSocial": "Universidad Autónoma de Nuevo León",
+    "nombreComercial": "UANL",
+    "giro": "Educación Superior e Investigación",
+    "numeroEmpleados": 21500,
+    "numeroVehiculos": 220,
+    "estado": "Nuevo León",
+    "ciudad": "San Nicolás de los Garza",
+    "domicilio": "Ciudad Universitaria s/n, Col. Universidad Autónoma de Nuevo León, C.P. 66455",
+    "telefonos": "+52 (81) 8329-4000 / +52 (81) 8329-4050",
+    "correo": "recursos.financieros@uanl.mx",
+    "responsables": [
+      {
+        "nombre": "Dr. Santos Guzmán López",
+        "cargo": "Rectoría General / Secretaría General",
+        "correo": "rectoria@uanl.mx",
+        "telefono": "+52 (81) 8329-4010"
+      },
+      {
+        "nombre": "C.P. Rafael Garza Montemayor",
+        "cargo": "Director de Adquisiciones y Seguros Patrimoniales",
+        "correo": "adquisiciones@uanl.mx",
+        "telefono": "+52 (81) 8329-4088"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 18200000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-05",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-24",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-NL-004",
+    "razonSocial": "Sindicato de Trabajadores de la Industria Metal-Mecánica y Siderúrgica de NL",
+    "nombreComercial": "STIMMS NL",
+    "giro": "Sindicato Industrial",
+    "numeroEmpleados": 8200,
+    "numeroVehiculos": 28,
+    "estado": "Nuevo León",
+    "ciudad": "Monterrey",
+    "domicilio": "Calle Washington 425 Ote., Centro, C.P. 64000",
+    "telefonos": "+52 (81) 8342-1290 / +52 (81) 8342-1845",
+    "correo": "convenios@sindicatometalnl.org.mx",
+    "responsables": [
+      {
+        "nombre": "Lic. Homero Escamilla Chapa",
+        "cargo": "Secretario General de Previsión Social",
+        "correo": "previsionsocial@sindicatometalnl.org.mx",
+        "telefono": "+52 (81) 8342-1295"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 5400000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-11",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-21",
+    "notas": [
+      {
+        "fecha": "2026-10-11",
+        "usuario": "Sistema Quálitas",
+        "texto": "Sindicato industrial del ramo metal-mecánico. Excelente potencial para convenio de colectividad automotriz para agremiados con tarifas preferenciales."
+      }
+    ],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-BC-001",
+    "razonSocial": "Plantronics de México, S.A. de C.V. (Poly / HP)",
+    "nombreComercial": "Poly Plantronics Tijuana",
+    "giro": "Manufactura Electrónica y Telecomunicaciones",
+    "numeroEmpleados": 2400,
+    "numeroVehiculos": 35,
+    "estado": "Baja California",
+    "ciudad": "Tijuana",
+    "domicilio": "Av. Paseo Cucapah 20555, El Lago, C.P. 22210",
+    "telefonos": "+52 (664) 626-1000 / +52 (664) 626-1150",
+    "correo": "recursos.humanos.tj@hp.com",
+    "responsables": [
+      {
+        "nombre": "Lic. Sofía Terrazas Mendívil",
+        "cargo": "Gerente Senior de Recursos Humanos",
+        "correo": "sterrazas@poly.com",
+        "telefono": "+52 (664) 626-1022"
+      },
+      {
+        "nombre": "Ing. Ricardo Duarte Valenzuela",
+        "cargo": "Superintendente de Transportación y Logística",
+        "correo": "rduarte@poly.com",
+        "telefono": "+52 (664) 626-1090"
+      }
+    ],
+    "tipoOportunidad": "Mixto (Flotilla + Colectividad)",
+    "potencialPrimaEstimada": 2950000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-12",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-19",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-BC-002",
+    "razonSocial": "Kenworth Mexicana, S.A. de C.V. / PACCAR México",
+    "nombreComercial": "Kenworth Mexicana",
+    "giro": "Fabricación y Ensamble de Tractocamiones",
+    "numeroEmpleados": 3600,
+    "numeroVehiculos": 75,
+    "estado": "Baja California",
+    "ciudad": "Mexicali",
+    "domicilio": "Calzada Cetys 2000, Parque Industrial Rivera, C.P. 21259",
+    "telefonos": "+52 (686) 562-8000 / +52 (686) 562-8200",
+    "correo": "contacto.paccar@paccar.com",
+    "responsables": [
+      {
+        "nombre": "Lic. Javier Orozco Murillo",
+        "cargo": "Director de Recursos Humanos y Relaciones Laborales",
+        "correo": "javier.orozco@paccar.com",
+        "telefono": "+52 (686) 562-8114"
+      },
+      {
+        "nombre": "Ing. Carlos Beltrán Soto",
+        "cargo": "Gerente de Flotilla Corporativa y Movilidad",
+        "correo": "carlos.beltran@paccar.com",
+        "telefono": "+52 (686) 562-8245"
+      }
+    ],
+    "tipoOportunidad": "Flotilla Comercial",
+    "potencialPrimaEstimada": 3800000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-09-28",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-23",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-BC-003",
+    "razonSocial": "Universidad Autónoma de Baja California",
+    "nombreComercial": "UABC",
+    "giro": "Educación Superior",
+    "numeroEmpleados": 6800,
+    "numeroVehiculos": 90,
+    "estado": "Baja California",
+    "ciudad": "Mexicali",
+    "domicilio": "Av. Álvaro Obregón s/n, Nueva, C.P. 21100",
+    "telefonos": "+52 (686) 551-8200 / +52 (686) 551-8250",
+    "correo": "adquisiciones@uabc.edu.mx",
+    "responsables": [
+      {
+        "nombre": "C.P. Mónica Armenta Zazueta",
+        "cargo": "Jefa de Departamento de Recursos Financieros y Seguros",
+        "correo": "monica.armenta@uabc.edu.mx",
+        "telefono": "+52 (686) 551-8224"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 6200000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-10",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-20",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-BCS-001",
+    "razonSocial": "Exportadora de Sal, S.A. de C.V.",
+    "nombreComercial": "ESSA Guerrero Negro",
+    "giro": "Minería Marina y Extracción Salinas",
+    "numeroEmpleados": 1450,
+    "numeroVehiculos": 85,
+    "estado": "Baja California Sur",
+    "ciudad": "La Paz",
+    "domicilio": "Av. Álvaro Obregón 1665, Col. El Esterito, C.P. 23000",
+    "telefonos": "+52 (612) 122-3860 / +52 (615) 157-0100",
+    "correo": "compras.seguros@essa.com.mx",
+    "responsables": [
+      {
+        "nombre": "Ing. Gustavo Amador Castro",
+        "cargo": "Gerente de Logística, Transporte y Flota Operativa",
+        "correo": "gamador@essa.com.mx",
+        "telefono": "+52 (612) 122-3875"
+      },
+      {
+        "nombre": "Lic. Leticia Higuera Ojeda",
+        "cargo": "Supervisora de Recursos Humanos",
+        "correo": "lhiguera@essa.com.mx",
+        "telefono": "+52 (615) 157-0120"
+      }
+    ],
+    "tipoOportunidad": "Flotilla Comercial",
+    "potencialPrimaEstimada": 2450000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-09",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-21",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-BCS-002",
+    "razonSocial": "Grupo Pueblo Bonito Golf & Spa Resorts",
+    "nombreComercial": "Pueblo Bonito Resorts",
+    "giro": "Hotelería, Turismo y Entretenimiento",
+    "numeroEmpleados": 3200,
+    "numeroVehiculos": 62,
+    "estado": "Baja California Sur",
+    "ciudad": "Los Cabos",
+    "domicilio": "Predio Paraíso Escondido s/n, Centro, C.P. 23450 Cabo San Lucas",
+    "telefonos": "+52 (624) 142-9999 / +52 (624) 142-9700",
+    "correo": "rh.loscabos@pueblobonito.com.mx",
+    "responsables": [
+      {
+        "nombre": "Lic. Mariana Cosío Cossío",
+        "cargo": "Directora de Capital Humano",
+        "correo": "mcosio@pueblobonito.com.mx",
+        "telefono": "+52 (624) 142-9920"
+      },
+      {
+        "nombre": "Ing. Salvador Lucero Mendoza",
+        "cargo": "Gerente de Transportación Turística y Flotillas",
+        "correo": "slucero@pueblobonito.com.mx",
+        "telefono": "+52 (624) 142-9955"
+      }
+    ],
+    "tipoOportunidad": "Mixto (Flotilla + Colectividad)",
+    "potencialPrimaEstimada": 3100000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-06",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-25",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-BCS-003",
+    "razonSocial": "Baja Ferries, S.A.P.I. de C.V.",
+    "nombreComercial": "Baja Ferries Logística",
+    "giro": "Transporte de Pasajeros y Carga Terrestre/Marítima",
+    "numeroEmpleados": 540,
+    "numeroVehiculos": 48,
+    "estado": "Baja California Sur",
+    "ciudad": "La Paz",
+    "domicilio": "Ignacio Allende 1025, Fracc. Las Garzas, C.P. 23079",
+    "telefonos": "+52 (612) 123-6600 / +52 (612) 123-6620",
+    "correo": "atencion@bajaferries.com.mx",
+    "responsables": [
+      {
+        "nombre": "Ing. Daniel Navarro Rubio",
+        "cargo": "Gerente de Flota Terrestre y Patios",
+        "correo": "dnavarro@bajaferries.com.mx",
+        "telefono": "+52 (612) 123-6635"
+      }
+    ],
+    "tipoOportunidad": "Flotilla Comercial",
+    "potencialPrimaEstimada": 1650000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-11",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-22",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-SON-001",
+    "razonSocial": "Buenavista del Cobre, S.A. de C.V. (Grupo México Minería)",
+    "nombreComercial": "Minera Cananea / Buenavista del Cobre",
+    "giro": "Minería y Metalurgia Extractiva",
+    "numeroEmpleados": 4300,
+    "numeroVehiculos": 145,
+    "estado": "Sonora",
+    "ciudad": "Cananea",
+    "domicilio": "Carretera Cananea-Agua Prieta Km 4.5, C.P. 84620",
+    "telefonos": "+52 (645) 332-6000 / +52 (645) 332-6120",
+    "correo": "adquisiciones.buenavista@gmexico.com",
+    "responsables": [
+      {
+        "nombre": "Ing. Rodolfo Durazo Grijalva",
+        "cargo": "Superintendente General de Transporte y Equipo Móvil",
+        "correo": "rdurazo@gmexico.com",
+        "telefono": "+52 (645) 332-6045"
+      },
+      {
+        "nombre": "Lic. Patricia Encinas Corella",
+        "cargo": "Gerente de Bienestar Laboral y Relaciones Comunitarias",
+        "correo": "pencinas@gmexico.com",
+        "telefono": "+52 (645) 332-6080"
+      }
+    ],
+    "tipoOportunidad": "Mixto (Flotilla + Colectividad)",
+    "potencialPrimaEstimada": 6500000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-07",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-28",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-SON-002",
+    "razonSocial": "Ford Motor Company, S.A. de C.V. - Planta Ensamble Hermosillo",
+    "nombreComercial": "Ford Hermosillo",
+    "giro": "Fabricación y Ensamble Automotriz",
+    "numeroEmpleados": 3700,
+    "numeroVehiculos": 52,
+    "estado": "Sonora",
+    "ciudad": "Hermosillo",
+    "domicilio": "Carretera a La Colorada Km 4.5, Parque Industrial, C.P. 83299",
+    "telefonos": "+52 (662) 289-3000 / +52 (662) 289-3100",
+    "correo": "contacto.hermosillo@ford.com",
+    "responsables": [
+      {
+        "nombre": "Lic. Claudia Figueroa Bórquez",
+        "cargo": "Gerente de Compensaciones, Seguros y Beneficios",
+        "correo": "cfigueroa@ford.com",
+        "telefono": "+52 (662) 289-3040"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 4200000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-10",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-21",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-SON-003",
+    "razonSocial": "Universidad de Sonora",
+    "nombreComercial": "UNISON",
+    "giro": "Educación Superior",
+    "numeroEmpleados": 4900,
+    "numeroVehiculos": 58,
+    "estado": "Sonora",
+    "ciudad": "Hermosillo",
+    "domicilio": "Blvd. Luis Encinas y Rosales s/n, Col. Centro, C.P. 83000",
+    "telefonos": "+52 (662) 259-2100 / +52 (662) 259-2150",
+    "correo": "patrimonio@unison.mx",
+    "responsables": [
+      {
+        "nombre": "Mtro. Luis Enrique Ibarra Robles",
+        "cargo": "Director de Adquisiciones y Patrimonio Universitario",
+        "correo": "libarra@unison.mx",
+        "telefono": "+52 (662) 259-2115"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 4500000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-11",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-20",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-SON-004",
+    "razonSocial": "Sindicato Nacional de Trabajadores Mineros y Metalúrgicos de la RM - Sección 65",
+    "nombreComercial": "Sindicato Minero Cananea Sección 65",
+    "giro": "Sindicato Minero y Metalúrgico",
+    "numeroEmpleados": 2900,
+    "numeroVehiculos": 22,
+    "estado": "Sonora",
+    "ciudad": "Cananea",
+    "domicilio": "Av. Juárez 45, Col. Centro, C.P. 84620",
+    "telefonos": "+52 (645) 332-1550 / +52 (645) 332-1552",
+    "correo": "seccion65@minerosmexico.org",
+    "responsables": [
+      {
+        "nombre": "Sr. Antonio Morales Camarena",
+        "cargo": "Secretario General Local",
+        "correo": "secretariageneral@minerosmexico.org",
+        "telefono": "+52 (645) 332-1555"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 2600000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-12",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-23",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-CHIH-001",
+    "razonSocial": "Foxconn PCE Technology de Juárez, S.A. de C.V.",
+    "nombreComercial": "Foxconn Juárez",
+    "giro": "Manufactura Electrónica y Servidores",
+    "numeroEmpleados": 8900,
+    "numeroVehiculos": 42,
+    "estado": "Chihuahua",
+    "ciudad": "Ciudad Juárez",
+    "domicilio": "Av. de las Torres 2175, Parque Industrial Intermex Oriente, C.P. 32575",
+    "telefonos": "+52 (656) 692-7000 / +52 (656) 692-7050",
+    "correo": "rh.juarez@foxconn.com",
+    "responsables": [
+      {
+        "nombre": "Lic. Gerardo Balderas Ponce",
+        "cargo": "Director de Recursos Humanos y Relaciones con Empleados",
+        "correo": "gbalderas@foxconn.com",
+        "telefono": "+52 (656) 692-7015"
+      },
+      {
+        "nombre": "Ing. Miguel Ángel Siqueiros",
+        "cargo": "Gerente de Instalaciones y Flota Utilitaria",
+        "correo": "msiqueiros@foxconn.com",
+        "telefono": "+52 (656) 692-7088"
+      }
+    ],
+    "tipoOportunidad": "Mixto (Flotilla + Colectividad)",
+    "potencialPrimaEstimada": 7800000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-09",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-20",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-CHIH-002",
+    "razonSocial": "Grupo Bafar, S.A.B. de C.V.",
+    "nombreComercial": "Grupo Bafar",
+    "giro": "Agroindustria, Cárnicos y Distribución de Alimentos",
+    "numeroEmpleados": 12500,
+    "numeroVehiculos": 280,
+    "estado": "Chihuahua",
+    "ciudad": "Chihuahua",
+    "domicilio": "Km 7.5 Carretera a Cuauhtémoc, Col. Las Ánimas, C.P. 31450",
+    "telefonos": "+52 (614) 439-0100 / +52 (614) 439-0150",
+    "correo": "atencion.corporativa@bafar.com.mx",
+    "responsables": [
+      {
+        "nombre": "Lic. Eduardo Ramos Baeza",
+        "cargo": "Director de Capital Humano",
+        "correo": "eramos@bafar.com.mx",
+        "telefono": "+52 (614) 439-0112"
+      },
+      {
+        "nombre": "Ing. Héctor Terrazas Fierro",
+        "cargo": "Gerente Corporativo de Transporte y Flotas",
+        "correo": "hterrazas@bafar.com.mx",
+        "telefono": "+52 (614) 439-0230"
+      }
+    ],
+    "tipoOportunidad": "Flotilla Comercial",
+    "potencialPrimaEstimada": 9400000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-04",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-24",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-CHIH-003",
+    "razonSocial": "Universidad Autónoma de Chihuahua",
+    "nombreComercial": "UACH",
+    "giro": "Educación Superior",
+    "numeroEmpleados": 4100,
+    "numeroVehiculos": 65,
+    "estado": "Chihuahua",
+    "ciudad": "Chihuahua",
+    "domicilio": "Calle Escorza 900, Col. Centro, C.P. 31000",
+    "telefonos": "+52 (614) 439-1500 / +52 (614) 439-1520",
+    "correo": "rectoria@uach.mx",
+    "responsables": [
+      {
+        "nombre": "C.P. Raúl Hernández Anchondo",
+        "cargo": "Director Administrativo y Finanzas",
+        "correo": "rhernandez@uach.mx",
+        "telefono": "+52 (614) 439-1510"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 3900000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-10",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-21",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-COAH-001",
+    "razonSocial": "Grupo Industrial Saltillo, S.A.B. de C.V.",
+    "nombreComercial": "GISSA",
+    "giro": "Fundición y Autopartes de Hierro / Aluminios",
+    "numeroEmpleados": 6600,
+    "numeroVehiculos": 80,
+    "estado": "Coahuila",
+    "ciudad": "Saltillo",
+    "domicilio": "Blvd. Vito Alessio Robles 2451, C.P. 25230",
+    "telefonos": "+52 (844) 411-1000 / +52 (844) 411-1020",
+    "correo": "comunicacion@gis.com.mx",
+    "responsables": [
+      {
+        "nombre": "Lic. Guillermo Aguirre Berlanga",
+        "cargo": "Director de Recursos Humanos Corporativo",
+        "correo": "gaguirre@gis.com.mx",
+        "telefono": "+52 (844) 411-1014"
+      },
+      {
+        "nombre": "Ing. Alejandro Dávila Valdés",
+        "cargo": "Gerente de Servicios Patrimoniales y Flota",
+        "correo": "adavila@gis.com.mx",
+        "telefono": "+52 (844) 411-1055"
+      }
+    ],
+    "tipoOportunidad": "Mixto (Flotilla + Colectividad)",
+    "potencialPrimaEstimada": 5900000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-01",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-20",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-COAH-002",
+    "razonSocial": "Universidad Autónoma de Coahuila",
+    "nombreComercial": "UAdeC",
+    "giro": "Educación Superior",
+    "numeroEmpleados": 6400,
+    "numeroVehiculos": 72,
+    "estado": "Coahuila",
+    "ciudad": "Saltillo",
+    "domicilio": "Blvd. Venustiano Carranza y González Lobo s/n, República Oriente, C.P. 25280",
+    "telefonos": "+52 (844) 438-1600 / +52 (844) 438-1650",
+    "correo": "tesoreria@uadec.edu.mx",
+    "responsables": [
+      {
+        "nombre": "Dr. Jorge Alanís Canales",
+        "cargo": "Tesorero General de la Universidad",
+        "correo": "jalanis@uadec.edu.mx",
+        "telefono": "+52 (844) 438-1605"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 5800000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-10",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-22",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-COAH-003",
+    "razonSocial": "Sindicato Nacional Democrático de Trabajadores Mineros, Metalúrgicos, Siderúrgicos y Conexos",
+    "nombreComercial": "Sindicato Democrático Monclova",
+    "giro": "Sindicato Siderúrgico y Metalúrgico",
+    "numeroEmpleados": 5600,
+    "numeroVehiculos": 24,
+    "estado": "Coahuila",
+    "ciudad": "Monclova",
+    "domicilio": "Calle Juárez 310, Zona Centro, C.P. 25700",
+    "telefonos": "+52 (866) 633-4020 / +52 (866) 633-4022",
+    "correo": "sindicatodemocratico@prodigy.net.mx",
+    "responsables": [
+      {
+        "nombre": "Sr. Ismael Leija Escalante",
+        "cargo": "Secretario General Nacional",
+        "correo": "secretariageneral@sindicatodemocratico.mx",
+        "telefono": "+52 (866) 633-4025"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 4700000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-11",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-23",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-DGO-001",
+    "razonSocial": "Grupo Lala, S.A.B. de C.V. (Complejo Industrial Laguna)",
+    "nombreComercial": "Grupo Lala Complejo Laguna",
+    "giro": "Industria Láctea y Logística de Frío",
+    "numeroEmpleados": 8800,
+    "numeroVehiculos": 410,
+    "estado": "Durango",
+    "ciudad": "Gómez Palacio",
+    "domicilio": "Calzada Lázaro Cárdenas 285, Parque Industrial Lagunero, C.P. 35078",
+    "telefonos": "+52 (871) 779-0100 / +52 (871) 779-0150",
+    "correo": "contacto.laguna@grupolala.com",
+    "responsables": [
+      {
+        "nombre": "Lic. Rogelio Martínez Sotomayor",
+        "cargo": "Director de Capital Humano Operaciones Norte",
+        "correo": "rmartinez@grupolala.com",
+        "telefono": "+52 (871) 779-0112"
+      },
+      {
+        "nombre": "Ing. David Silva Valenzuela",
+        "cargo": "Director de Transporte Primario y Distribución",
+        "correo": "dsilva@grupolala.com",
+        "telefono": "+52 (871) 779-0205"
+      }
+    ],
+    "tipoOportunidad": "Flotilla Comercial",
+    "potencialPrimaEstimada": 8900000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-03",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-27",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-DGO-002",
+    "razonSocial": "First Majestic Silver Corp / Primero Empresa Minera, S.A. de C.V.",
+    "nombreComercial": "Mina San Dimas (Tayoltita)",
+    "giro": "Minería de Plata y Oro Subterránea",
+    "numeroEmpleados": 1650,
+    "numeroVehiculos": 68,
+    "estado": "Durango",
+    "ciudad": "Durango",
+    "domicilio": "Blvd. Guadiana 202, Fracc. Lomas del Parque, C.P. 34100",
+    "telefonos": "+52 (618) 129-8800 / +52 (618) 129-8810",
+    "correo": "adquisiciones.sandimas@firstmajestic.com",
+    "responsables": [
+      {
+        "nombre": "Ing. Armando Castañeda Rosales",
+        "cargo": "Gerente de Compras y Suministros Mina",
+        "correo": "acastaneda@firstmajestic.com",
+        "telefono": "+52 (618) 129-8822"
+      }
+    ],
+    "tipoOportunidad": "Flotilla Comercial",
+    "potencialPrimaEstimada": 2200000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-09",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-21",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-DGO-003",
+    "razonSocial": "Universidad Juárez del Estado de Durango",
+    "nombreComercial": "UJED",
+    "giro": "Educación Superior",
+    "numeroEmpleados": 3600,
+    "numeroVehiculos": 38,
+    "estado": "Durango",
+    "ciudad": "Durango",
+    "domicilio": "Constitución 404 Sur, Zona Centro, C.P. 34000",
+    "telefonos": "+52 (618) 827-1200 / +52 (618) 827-1215",
+    "correo": "administracion@ujed.mx",
+    "responsables": [
+      {
+        "nombre": "C.P. Jesús Guillermo Soto Leal",
+        "cargo": "Director de Finanzas y Administración",
+        "correo": "gsoto@ujed.mx",
+        "telefono": "+52 (618) 827-1208"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 3300000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-10",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-22",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-TAM-001",
+    "razonSocial": "Transportes Monterrey-Nuevo Laredo, S.A. de C.V. (Grupo TM)",
+    "nombreComercial": "Grupo TM Transportes",
+    "giro": "Transporte de Carga Pesada y Logística Transfronteriza",
+    "numeroEmpleados": 890,
+    "numeroVehiculos": 340,
+    "estado": "Tamaulipas",
+    "ciudad": "Nuevo Laredo",
+    "domicilio": "Carretera Nacional Km 14.5, Col. Los Garza, C.P. 88290",
+    "telefonos": "+52 (867) 711-2000 / +52 (867) 711-2040",
+    "correo": "contacto@grupotm.com.mx",
+    "responsables": [
+      {
+        "nombre": "Lic. Enrique Benavides Treviño",
+        "cargo": "Director de Operaciones y Seguridad Vial",
+        "correo": "ebenavides@grupotm.com.mx",
+        "telefono": "+52 (867) 711-2015"
+      },
+      {
+        "nombre": "Lic. Adriana Galindo Lozano",
+        "cargo": "Gerente de Recursos Humanos",
+        "correo": "agalindo@grupotm.com.mx",
+        "telefono": "+52 (867) 711-2033"
+      }
+    ],
+    "tipoOportunidad": "Flotilla Comercial",
+    "potencialPrimaEstimada": 7600000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-06",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-25",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-TAM-002",
+    "razonSocial": "Emerson Electric de México, S.A. de C.V.",
+    "nombreComercial": "Emerson Reynosa",
+    "giro": "Manufactura de Instrumentación y Válvulas Industriales",
+    "numeroEmpleados": 1950,
+    "numeroVehiculos": 28,
+    "estado": "Tamaulipas",
+    "ciudad": "Reynosa",
+    "domicilio": "Av. Industrial Falcón 120, Parque Industrial del Norte, C.P. 88736",
+    "telefonos": "+52 (899) 921-5000 / +52 (899) 921-5040",
+    "correo": "recursoshumanos.reynosa@emerson.com",
+    "responsables": [
+      {
+        "nombre": "Lic. Karen Saldaña Peña",
+        "cargo": "Gerente de Compensaciones y Prestaciones",
+        "correo": "ksaldana@emerson.com",
+        "telefono": "+52 (899) 921-5022"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 2350000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-11",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-22",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  },
+  {
+    "id": "PROSP-TAM-003",
+    "razonSocial": "Universidad Autónoma de Tamaulipas",
+    "nombreComercial": "UAT",
+    "giro": "Educación Superior",
+    "numeroEmpleados": 5600,
+    "numeroVehiculos": 88,
+    "estado": "Tamaulipas",
+    "ciudad": "Ciudad Victoria",
+    "domicilio": "Matamoros 8 y 9 s/n, Zona Centro, C.P. 87000",
+    "telefonos": "+52 (834) 318-1800 / +52 (834) 318-1820",
+    "correo": "secretaria.finanzas@uat.edu.mx",
+    "responsables": [
+      {
+        "nombre": "C.P. Eduardo Olivares Gómez",
+        "cargo": "Director de Adquisiciones y Gestión Patrimonial",
+        "correo": "eolivares@uat.edu.mx",
+        "telefono": "+52 (834) 318-1835"
+      }
+    ],
+    "tipoOportunidad": "Colectividad Empleados",
+    "potencialPrimaEstimada": 5100000,
+    "estadoGestion": "Nuevo Prospecto",
+    "fechaAlta": "2026-10-10",
+    "fechaUltimoContacto": null,
+    "fechaProximoSeguimiento": "2026-10-21",
+    "notas": [],
+    "fuente": "Base Estratégica Norte"
+  }
+]

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quálitas Seguros • Prospección Comercial de Flotillas y Colectividades Zona Norte</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="logo-qualitas.png">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Top Regional States Strip -->
+  <div class="header-top">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i>
+      <span><strong>Quálitas Compañía de Seguros</strong> • Sistema de Inteligencia Comercial de Colectividades y Flotillas</span>
+    </div>
+    <div class="states-pill-container">
+      <span class="state-badge-mini">Baja California</span>
+      <span class="state-badge-mini">Baja California Sur</span>
+      <span class="state-badge-mini">Sonora</span>
+      <span class="state-badge-mini">Chihuahua</span>
+      <span class="state-badge-mini">Coahuila</span>
+      <span class="state-badge-mini">Durango</span>
+      <span class="state-badge-mini">Nuevo León</span>
+      <span class="state-badge-mini">Tamaulipas</span>
+    </div>
+  </div>
+
+  <!-- Main Navigation Navbar -->
+  <header class="navbar">
+    <div class="brand-wrapper">
+      <img src="logo-qualitas.png" alt="Quálitas Compañía de Seguros" class="brand-logo">
+      <div class="brand-title">
+        <h1>PROSPECCIÓN ZONA NORTE</h1>
+        <p>EMPRESAS >50 EMP • FLOTILLAS >20 UNIDADES • SINDICATOS • UNIVERSIDADES</p>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <!-- AI Cascade Status Indicator Button -->
+      <button class="btn btn-outline btn-sm" id="btnAiStatus" title="Verificar estado de las 5 IAs gratuitas en cascada">
+        <div class="cascade-pulse"></div>
+        <span id="aiActiveProviderText">Cascada Multi-IA Activa</span>
+      </button>
+
+      <!-- New AI Prospecting Button -->
+      <button class="btn btn-primary" id="btnOpenAiProspector">
+        <i data-lucide="sparkles"></i>
+        <span>Buscar Prospectos con IA</span>
+      </button>
+
+      <!-- New Manual Prospect -->
+      <button class="btn btn-secondary" id="btnOpenNewProspectModal">
+        <i data-lucide="plus-circle"></i>
+        <span>Nuevo Prospecto</span>
+      </button>
+
+      <!-- Video Tutorial Link -->
+      <a href="tutorial.html" class="btn btn-outline" style="border-color: #8C1D6B; color: #8C1D6B;" title="Ver Video Tutorial de Capacitación">
+        <i data-lucide="play-circle"></i>
+        <span>Video Tutorial</span>
+      </a>
+
+      <!-- Export to Excel -->
+      <button class="btn btn-outline" id="btnExportCsv" title="Exportar a formato Excel CSV con UTF-8 BOM">
+        <i data-lucide="file-spreadsheet"></i>
+        <span>Exportar Excel</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- KPI Analytics Dashboard -->
+  <section class="kpi-container" id="kpiDashboard">
+    <div class="kpi-card">
+      <div class="kpi-data">
+        <h3>Prospectos Calificados</h3>
+        <div class="value" id="kpiTotalProspectos">-</div>
+      </div>
+      <div class="kpi-icon">
+        <i data-lucide="building-2"></i>
+      </div>
+    </div>
+
+    <div class="kpi-card cyan-accent">
+      <div class="kpi-data">
+        <h3>Flotilla Vehicular</h3>
+        <div class="value" id="kpiTotalVehiculos">-</div>
+      </div>
+      <div class="kpi-icon">
+        <i data-lucide="truck"></i>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-data">
+        <h3>Empleados / Afiliados</h3>
+        <div class="value" id="kpiTotalEmpleados">-</div>
+      </div>
+      <div class="kpi-icon">
+        <i data-lucide="users"></i>
+      </div>
+    </div>
+
+    <div class="kpi-card cyan-accent">
+      <div class="kpi-data">
+        <h3>Prima Anual Potencial</h3>
+        <div class="value" id="kpiPrimaEstimada" style="color: var(--qualitas-magenta);">-</div>
+      </div>
+      <div class="kpi-icon">
+        <i data-lucide="badge-dollar-sign"></i>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-data">
+        <h3>Tasa de Gestión</h3>
+        <div class="value" id="kpiTasaGestion" style="color: #059669;">-%</div>
+      </div>
+      <div class="kpi-icon" style="background: #ECFDF5; color: #059669;">
+        <i data-lucide="check-circle-2"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advanced Multi-Criteria Filter Bar -->
+  <section class="filters-container">
+    <div class="filters-card">
+      <div class="filters-header">
+        <h2>
+          <i data-lucide="sliders-horizontal" style="color: var(--qualitas-magenta); width: 18px; height: 18px;"></i>
+          Filtros de Prospección Comercial
+        </h2>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn btn-outline btn-sm" id="btnResetFilters">
+            <i data-lucide="rotate-ccw"></i>
+            Limpiar Filtros
+          </button>
+          <button class="btn btn-outline btn-sm" id="btnResetAllManagement" title="Reiniciar todos los negocios a 'Nuevo Prospecto' (limpiar bitácora y fecha de contacto)">
+            <i data-lucide="sparkles"></i>
+            Limpiar Gestiones (A Nuevos)
+          </button>
+          <button class="btn btn-outline btn-sm" id="btnDeleteManaged" style="color: #DC2626; border-color: #FECACA;" title="Eliminar definitivamente los negocios que ya tienen una gestión">
+            <i data-lucide="trash-2"></i>
+            Eliminar Gestionados
+          </button>
+        </div>
+      </div>
+
+      <div class="filters-grid">
+        <!-- Search -->
+        <div class="filter-group" style="grid-column: span 2;">
+          <label for="filterSearch">Búsqueda Rápida</label>
+          <div style="position: relative;">
+            <input type="text" id="filterSearch" class="form-control" placeholder="Buscar por razón social, responsable o ciudad..." style="padding-left: 32px; width: 100%;">
+            <i data-lucide="search" style="position: absolute; left: 10px; top: 9px; width: 16px; height: 16px; color: var(--qualitas-gray);"></i>
+          </div>
+        </div>
+
+        <!-- Filter Estado -->
+        <div class="filter-group">
+          <label for="filterEstado">Estado (Norte)</label>
+          <select id="filterEstado" class="form-control">
+            <option value="Todos">Todos los Estados</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California Sur">Baja California Sur</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Coahuila">Coahuila</option>
+            <option value="Durango">Durango</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+          </select>
+        </div>
+
+        <!-- Filter Ciudad -->
+        <div class="filter-group">
+          <label for="filterCiudad">Ciudad</label>
+          <select id="filterCiudad" class="form-control">
+            <option value="Todas">Todas las Ciudades</option>
+          </select>
+        </div>
+
+        <!-- Filter Giro -->
+        <div class="filter-group">
+          <label for="filterGiro">Giro Empresarial</label>
+          <select id="filterGiro" class="form-control">
+            <option value="Todos">Todos los Giros</option>
+          </select>
+        </div>
+
+        <!-- Filter Tipo Oportunidad -->
+        <div class="filter-group">
+          <label for="filterTipoOportunidad">Oportunidad Quálitas</label>
+          <select id="filterTipoOportunidad" class="form-control">
+            <option value="Todos">Todas las Oportunidades</option>
+            <option value="Flotilla Comercial">Flotilla Comercial</option>
+            <option value="Colectividad Empleados">Colectividad Empleados</option>
+            <option value="Mixto">Mixto (Flotilla + Colectividad)</option>
+          </select>
+        </div>
+
+        <!-- Filter Estado Gestión -->
+        <div class="filter-group">
+          <label for="filterEstadoGestion">Estado de Gestión</label>
+          <select id="filterEstadoGestion" class="form-control">
+            <option value="Todos">Todos los Estados</option>
+            <option value="Nuevo Prospecto">Nuevo Prospecto</option>
+            <option value="Contactado">Contactado</option>
+            <option value="Cita Agendada">Cita Agendada</option>
+            <option value="En Cotización">En Cotización</option>
+            <option value="Cerrado / Ganado">Cerrado / Ganado</option>
+            <option value="Descartado">Descartado</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area: Table / Kanban Views -->
+  <main class="main-content">
+    <div class="table-card">
+      <div class="table-header-bar">
+        <div class="results-count">
+          Mostrando <span id="displayedCount">0</span> prospectos calificados
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <!-- View Toggle: Tabla vs Kanban -->
+          <div class="view-toggle">
+            <button id="viewBtnTable" class="active">
+              <i data-lucide="table-2" style="width: 14px; height: 14px; vertical-align: -2px;"></i>
+              Tabla Detallada
+            </button>
+            <button id="viewBtnKanban">
+              <i data-lucide="kanban" style="width: 14px; height: 14px; vertical-align: -2px;"></i>
+              Embudo Comercial
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table View -->
+      <div id="tableViewContainer" style="overflow-x: auto;">
+        <table class="prospects-table">
+          <thead>
+            <tr>
+              <th>Razón Social / Organización</th>
+              <th>Giro & Ubicación</th>
+              <th>Empleados / Flotilla</th>
+              <th>Responsable de Decisión</th>
+              <th>Propuesta Quálitas</th>
+              <th>Gestión</th>
+              <th style="text-align: center;">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="prospectsTableBody">
+            <!-- Dynamic rows will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Kanban Board View (Hidden by default) -->
+      <div id="kanbanViewContainer" class="kanban-board" style="display: none;">
+        <!-- Columns will be populated dynamically -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. AI Email Generator Modal -->
+  <div class="modal-overlay" id="modalEmailGenerator" style="display: none;">
+    <div class="modal-content" style="max-width: 720px;">
+      <div class="modal-header">
+        <h3>
+          <i data-lucide="mail-check"></i>
+          Generador de Correo de Invitación Quálitas
+        </h3>
+        <button class="modal-close-btn" onclick="closeModal('modalEmailGenerator')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: var(--qualitas-cyan-light); padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.84rem; color: #005F66;">
+          <strong id="emailModalCompanyName">Empresa</strong> • 
+          <span id="emailModalDetails">Contacto: Lic. ...</span>
+        </div>
+
+        <label style="font-size: 0.8rem; font-weight: 700; color: var(--qualitas-gray); text-transform: uppercase;">
+          Selecciona el Enfoque Comercial:
+        </label>
+        <div class="tone-selector" style="margin-top: 6px;">
+          <div class="tone-card active" data-tone="ejecutivo" onclick="selectEmailTone('ejecutivo')">
+            <h4>Ejecutivo / Cita</h4>
+            <p>Directo, institucional, 15 min de exploración.</p>
+          </div>
+          <div class="tone-card" data-tone="financiero" onclick="selectEmailTone('financiero')">
+            <h4>Financiero & Flotilla</h4>
+            <p>Deducibilidad 100%, ahorro en prima y telemetría.</p>
+          </div>
+          <div class="tone-card" data-tone="colectividad" onclick="selectEmailTone('colectividad')">
+            <h4>Beneficio Colectividad</h4>
+            <p>Descuento vía nómina para empleados sin costo patronal.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <label style="font-size: 0.8rem; font-weight: 700; color: var(--qualitas-gray); text-transform: uppercase;">
+            Cuerpo del Mensaje (Redactado con estilo 100% humano):
+          </label>
+          <span id="emailAiSourceBadge" style="font-size: 0.75rem; color: var(--qualitas-magenta); font-weight: 600;">
+            Generado con Cascada IA
+          </span>
+        </div>
+        <textarea id="emailGeneratedContent" class="email-preview-box" style="width: 100%; height: 260px;"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="btnRegenerateEmail">
+          <i data-lucide="refresh-cw"></i>
+          Regenerar
+        </button>
+        <button class="btn btn-secondary" id="btnCopyEmail">
+          <i data-lucide="copy"></i>
+          Copiar Texto
+        </button>
+        <a href="#" class="btn btn-primary" id="btnOpenMailto" target="_blank">
+          <i data-lucide="send"></i>
+          Abrir en Correo
+        </a>
+        <a href="#" class="btn btn-secondary" id="btnOpenWhatsApp" target="_blank" style="background: #25D366; color: white;">
+          <i data-lucide="message-circle"></i>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. AI Prospect Discovery Modal -->
+  <div class="modal-overlay" id="modalAiProspector" style="display: none;">
+    <div class="modal-content" style="max-width: 620px;">
+      <div class="modal-header">
+        <h3>
+          <i data-lucide="sparkles"></i>
+          Búsqueda Inteligente de Prospectos con IA
+        </h3>
+        <button class="modal-close-btn" onclick="closeModal('modalAiProspector')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: var(--qualitas-gray); margin-bottom: 16px;">
+          Nuestra inteligencia comercial consulta en cascada a los 5 proveedores gratuitos (<strong>Gemini, Groq, OpenRouter, SambaNova y NVIDIA Build</strong>) para encontrar negocios y sindicatos no cubiertos que cumplan estrictamente con los filtros de suscripción de Quálitas.
+        </p>
+
+        <div class="filter-group" style="margin-bottom: 14px;">
+          <label for="aiProspectState">Estado del Norte de México:</label>
+          <select id="aiProspectState" class="form-control">
+            <option value="Todos">Aleatorio / Cualquiera de los 8 estados</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California Sur">Baja California Sur</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Coahuila">Coahuila</option>
+            <option value="Durango">Durango</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+          </select>
+        </div>
+
+        <div class="filter-group" style="margin-bottom: 14px;">
+          <label for="aiProspectGiro">Giro u Organización Específica (Opcional):</label>
+          <input type="text" id="aiProspectGiro" class="form-control" placeholder="Ej. Minería, Maquiladora, Transporte de Carga, Universidad, Sindicato Metalúrgico...">
+        </div>
+
+        <div class="filter-group" style="margin-bottom: 14px;">
+          <label for="aiProspectCount">Cantidad de Prospectos a Generar:</label>
+          <select id="aiProspectCount" class="form-control">
+            <option value="3">3 Prospectos Calificados</option>
+            <option value="5">5 Prospectos Calificados</option>
+            <option value="8">8 Prospectos Calificados</option>
+          </select>
+        </div>
+
+        <div style="background: #F8FAFC; border: 1px solid var(--qualitas-border); border-radius: 8px; padding: 12px; font-size: 0.8rem; color: #475569;">
+          <strong>Reglas de Suscripción Aplicadas:</strong>
+          <ul style="margin-left: 18px; margin-top: 4px;">
+            <li>Mínimo 50 empleados o 20 vehículos de flotilla comercial.</li>
+            <li>Sindicatos autorizados (excluidos maestros SNTE/CNTE y telefonistas STRM).</li>
+            <li>Enriquecimiento automático de domicilio, teléfono, responsables y cálculo de prima.</li>
+          </ul>
+        </div>
+
+        <!-- AI Progress Indicator -->
+        <div id="aiDiscoveryProgress" style="display: none; margin-top: 16px; text-align: center;">
+          <div class="cascade-pulse" style="width: 14px; height: 14px; display: inline-block; margin-bottom: 6px;"></div>
+          <div style="font-weight: 700; color: var(--qualitas-magenta); font-size: 0.9rem;" id="aiDiscoveryStatusText">
+            Consultando Cascada Multi-IA...
+          </div>
+          <p style="font-size: 0.78rem; color: var(--qualitas-gray);">Verificando disponibilidad de proveedores y estructurando datos</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modalAiProspector')">Cancelar</button>
+        <button class="btn btn-primary" id="btnRunAiDiscovery">
+          <i data-lucide="play"></i>
+          Iniciar Prospección con IA
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. AI Cascade Health Check Modal -->
+  <div class="modal-overlay" id="modalAiHealth" style="display: none;">
+    <div class="modal-content" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3>
+          <i data-lucide="cpu"></i>
+          Estado de Cascada de Inteligencias Artificiales
+        </h3>
+        <button class="modal-close-btn" onclick="closeModal('modalAiHealth')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.86rem; color: var(--qualitas-gray); margin-bottom: 16px;">
+          El sistema ejecuta las consultas en orden de prioridad secuencial. Si el proveedor 1 se satura o arroja error, se conmuta automáticamente al siguiente sin interrumpir la operación:
+        </p>
+
+        <div class="ai-status-list" id="aiStatusList">
+          <!-- Populated by JavaScript -->
+          <div style="text-align: center; padding: 20px;">Cargando estado de las IAs...</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modalAiHealth')">Cerrar</button>
+        <button class="btn btn-primary" id="btnRefreshAiHealth">
+          <i data-lucide="refresh-cw"></i>
+          Probar Conexiones
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Prospect Management / Bitácora Modal -->
+  <div class="modal-overlay" id="modalManagement" style="display: none;">
+    <div class="modal-content" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3>
+          <i data-lucide="clipboard-edit"></i>
+          Gestión Comercial y Bitácora
+        </h3>
+        <button class="modal-close-btn" onclick="closeModal('modalManagement')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom: 16px;">
+          <h4 id="managementCompanyName" style="color: var(--qualitas-dark); font-size: 1.05rem;">Empresa</h4>
+          <p id="managementCompanyMeta" style="font-size: 0.8rem; color: var(--qualitas-gray);">Ubicación y Giro</p>
+        </div>
+
+        <div class="filter-group" style="margin-bottom: 14px;">
+          <label for="editEstadoGestion">Fase del Embudo Comercial:</label>
+          <select id="editEstadoGestion" class="form-control">
+            <option value="Nuevo Prospecto">Nuevo Prospecto</option>
+            <option value="Contactado">Contactado</option>
+            <option value="Cita Agendada">Cita Agendada</option>
+            <option value="En Cotización">En Cotización</option>
+            <option value="Cerrado / Ganado">Cerrado / Ganado</option>
+            <option value="Descartado">Descartado</option>
+          </select>
+        </div>
+
+        <div class="filter-group" style="margin-bottom: 14px;">
+          <label for="newNoteText">Agregar Nueva Nota de Seguimiento o Resultado de Llamada/Cita:</label>
+          <textarea id="newNoteText" class="form-control" rows="3" placeholder="Ej. El Director de Recursos Humanos solicitó enviar propuesta formal para 180 colaboradores. Próxima llamada el jueves."></textarea>
+        </div>
+
+        <button class="btn btn-secondary btn-sm" id="btnAddNoteBtn" style="margin-bottom: 16px;">
+          <i data-lucide="plus"></i>
+          Guardar Nota en Historial
+        </button>
+
+        <label style="font-size: 0.8rem; font-weight: 700; color: var(--qualitas-gray); text-transform: uppercase;">
+          Historial de Bitácora:
+        </label>
+        <div id="notesHistoryContainer" style="margin-top: 8px; max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;">
+          <!-- Notes populated here -->
+        </div>
+      </div>
+      <div class="modal-footer" style="justify-content: space-between;">
+        <button class="btn btn-outline btn-sm" id="btnResetSingleManagement" style="color: #D97706; border-color: #FDE68A;" title="Regresar este negocio al estado inicial de 'Nuevo Prospecto'">
+          <i data-lucide="rotate-ccw"></i>
+          Limpiar Gestión de Este Negocio
+        </button>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-outline" onclick="closeModal('modalManagement')">Cerrar</button>
+          <button class="btn btn-primary" id="btnSaveManagementChanges">
+            <i data-lucide="check"></i>
+            Guardar Cambios
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. New Manual Prospect Modal -->
+  <div class="modal-overlay" id="modalNewProspect" style="display: none;">
+    <div class="modal-content" style="max-width: 680px;">
+      <div class="modal-header">
+        <h3>
+          <i data-lucide="building"></i>
+          Registrar Nuevo Prospecto Manualmente
+        </h3>
+        <button class="modal-close-btn" onclick="closeModal('modalNewProspect')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="newProspectForm">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div class="filter-group">
+              <label for="newRazonSocial">Razón Social *</label>
+              <input type="text" id="newRazonSocial" class="form-control" required placeholder="Ej. Aceros del Norte S.A. de C.V.">
+            </div>
+            <div class="filter-group">
+              <label for="newNombreComercial">Nombre Comercial</label>
+              <input type="text" id="newNombreComercial" class="form-control" placeholder="Ej. Aceros del Norte">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div class="filter-group">
+              <label for="newGiro">Giro de la Organización *</label>
+              <input type="text" id="newGiro" class="form-control" required placeholder="Ej. Manufactura, Logística, Universidad...">
+            </div>
+            <div class="filter-group">
+              <label for="newTipoOportunidad">Tipo de Oportunidad</label>
+              <select id="newTipoOportunidad" class="form-control">
+                <option value="Flotilla Comercial">Flotilla Comercial</option>
+                <option value="Colectividad Empleados">Colectividad Empleados</option>
+                <option value="Mixto (Flotilla + Colectividad)">Mixto (Flotilla + Colectividad)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div class="filter-group">
+              <label for="newEstado">Estado (Norte) *</label>
+              <select id="newEstado" class="form-control" required>
+                <option value="Baja California">Baja California</option>
+                <option value="Baja California Sur">Baja California Sur</option>
+                <option value="Sonora">Sonora</option>
+                <option value="Chihuahua">Chihuahua</option>
+                <option value="Coahuila">Coahuila</option>
+                <option value="Durango">Durango</option>
+                <option value="Nuevo León" selected>Nuevo León</option>
+                <option value="Tamaulipas">Tamaulipas</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="newCiudad">Ciudad *</label>
+              <input type="text" id="newCiudad" class="form-control" required placeholder="Ej. Monterrey, Saltillo, Tijuana...">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div class="filter-group">
+              <label for="newEmpleados">Número de Empleados / Asociados</label>
+              <input type="number" id="newEmpleados" class="form-control" min="0" placeholder="Ej. 150">
+            </div>
+            <div class="filter-group">
+              <label for="newVehiculos">Unidades de Flotilla</label>
+              <input type="number" id="newVehiculos" class="form-control" min="0" placeholder="Ej. 25">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div class="filter-group">
+              <label for="newResponsable">Nombre del Responsable</label>
+              <input type="text" id="newResponsable" class="form-control" placeholder="Ej. Lic. Gabriel Morales">
+            </div>
+            <div class="filter-group">
+              <label for="newCargo">Cargo</label>
+              <input type="text" id="newCargo" class="form-control" placeholder="Ej. Director de Recursos Humanos / Compras">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div class="filter-group">
+              <label for="newTelefonos">Teléfono(s)</label>
+              <input type="text" id="newTelefonos" class="form-control" placeholder="Ej. +52 (81) 8123-4567">
+            </div>
+            <div class="filter-group">
+              <label for="newCorreo">Correo Electrónico</label>
+              <input type="email" id="newCorreo" class="form-control" placeholder="contacto@empresa.com">
+            </div>
+          </div>
+
+          <div class="filter-group" style="margin-bottom: 12px;">
+            <label for="newDomicilio">Domicilio Completo</label>
+            <input type="text" id="newDomicilio" class="form-control" placeholder="Calle, Número, Colonia, C.P.">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modalNewProspect')">Cancelar</button>
+        <button class="btn btn-primary" id="btnSubmitNewProspect">
+          <i data-lucide="check"></i>
+          Guardar Prospecto
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

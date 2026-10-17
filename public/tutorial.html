@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Tutorial Quálitas • Cómo Usar el Portal de Prospección</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="logo-qualitas.png">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .tutorial-container {
+      max-width: 1300px;
+      margin: 20px auto 40px auto;
+      padding: 0 20px;
+    }
+    .video-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+      align-items: start;
+    }
+    .player-card {
+      background: #0F172A;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -5px rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: #0B1120;
+    }
+    #videoCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .player-controls {
+      background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+      padding: 14px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .scrubber-bar-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+      transition: height 0.15s ease;
+    }
+    .scrubber-bar-container:hover {
+      height: 10px;
+    }
+    .scrubber-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #8C1D6B 0%, #009FA9 100%);
+      border-radius: 3px;
+      width: 0%;
+      position: relative;
+    }
+    .scrubber-handle {
+      position: absolute;
+      right: -6px;
+      top: -3px;
+      width: 12px;
+      height: 12px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .control-buttons-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+    .left-controls, .right-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-ctrl {
+      background: transparent;
+      border: none;
+      color: #E2E8F0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+    }
+    .btn-ctrl:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+    }
+    .btn-play-pause {
+      background: var(--qualitas-magenta);
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+    }
+    .btn-play-pause:hover {
+      background: var(--qualitas-magenta-hover);
+      transform: scale(1.05);
+    }
+    .time-display {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #94A3B8;
+      font-variant-numeric: tabular-nums;
+    }
+    .captions-overlay {
+      position: absolute;
+      bottom: 24px;
+      left: 30px;
+      right: 30px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.4;
+      pointer-events: none;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+    .chapters-sidebar {
+      background: white;
+      border-radius: 14px;
+      box-shadow: var(--qualitas-shadow);
+      border: 1px solid var(--qualitas-border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .chapters-header {
+      padding: 16px 20px;
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--qualitas-border);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--qualitas-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chapters-list {
+      display: flex;
+      flex-direction: column;
+      max-height: 520px;
+      overflow-y: auto;
+    }
+    .chapter-item {
+      padding: 12px 18px;
+      border-bottom: 1px solid #F1F5F9;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .chapter-item:hover {
+      background: #FAF5FF;
+    }
+    .chapter-item.active {
+      background: var(--qualitas-magenta-light);
+      border-left: 4px solid var(--qualitas-magenta);
+    }
+    .chapter-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: #E2E8F0;
+      color: #475569;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .chapter-item.active .chapter-badge {
+      background: var(--qualitas-magenta);
+      color: white;
+    }
+    .chapter-info h4 {
+      font-size: 0.84rem;
+      color: var(--qualitas-dark);
+      margin-bottom: 2px;
+    }
+    .chapter-info span {
+      font-size: 0.72rem;
+      color: var(--qualitas-gray);
+    }
+    .guide-card {
+      margin-top: 24px;
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      border: 1px solid var(--qualitas-border);
+      box-shadow: var(--qualitas-shadow);
+    }
+    .guide-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .guide-step {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .guide-step-num {
+      width: 24px;
+      height: 24px;
+      background: var(--qualitas-cyan);
+      color: white;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+    .guide-step h4 {
+      font-size: 0.9rem;
+      color: var(--qualitas-dark);
+      margin-bottom: 6px;
+    }
+    .guide-step p {
+      font-size: 0.8rem;
+      color: #475569;
+      line-height: 1.45;
+    }
+    @media (max-width: 960px) {
+      .video-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Strip -->
+  <div class="header-top">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <i data-lucide="video" style="width: 16px; height: 16px;"></i>
+      <span><strong>Quálitas Compañía de Seguros</strong> • Video Tutorial Oficial para Asesores Comerciales</span>
+    </div>
+    <div>
+      <span class="state-badge-mini" style="background: rgba(255,255,255,0.25);">Guía Paso a Paso para Principiantes</span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="brand-wrapper">
+      <img src="logo-qualitas.png" alt="Quálitas Compañía de Seguros" class="brand-logo">
+      <div class="brand-title">
+        <h1>VIDEO TUTORIAL • CÓMO USAR LA APP</h1>
+        <p>CAPACITACIÓN COMERCIAL PASO A PASO EN ESPAÑOL</p>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <a href="index.html" class="btn btn-outline">
+        <i data-lucide="arrow-left"></i>
+        <span>Ir a la Aplicación Principal</span>
+      </a>
+      <button class="btn btn-secondary" id="btnDownloadRecording">
+        <i data-lucide="download"></i>
+        <span>Descargar Video (.webm)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Tutorial Section -->
+  <main class="tutorial-container">
+    <div class="video-layout">
+      
+      <!-- Video Player Column -->
+      <div>
+        <div class="player-card">
+          <div class="canvas-container">
+            <canvas id="videoCanvas" width="1280" height="720"></canvas>
+            <!-- Real-time Subtitles / Captions -->
+            <div class="captions-overlay" id="captionsText">
+              ¡Hola! Te damos la más cordial bienvenida a tu Portal de Prospección Comercial de Quálitas Compañía de Seguros.
+            </div>
+          </div>
+
+          <!-- Video Controls Bar -->
+          <div class="player-controls">
+            <!-- Scrubber Bar -->
+            <div class="scrubber-bar-container" id="scrubberBar">
+              <div class="scrubber-progress" id="scrubberProgress">
+                <div class="scrubber-handle"></div>
+              </div>
+            </div>
+
+            <!-- Buttons Row -->
+            <div class="control-buttons-row">
+              <div class="left-controls">
+                <button class="btn-ctrl btn-play-pause" id="btnPlayPause" title="Reproducir / Pausar">
+                  <i data-lucide="play" id="playIcon"></i>
+                </button>
+                <button class="btn-ctrl" id="btnRewind" title="Retroceder 10 segundos">
+                  <i data-lucide="rotate-ccw"></i>
+                </button>
+                <button class="btn-ctrl" id="btnForward" title="Adelantar 10 segundos">
+                  <i data-lucide="rotate-cw"></i>
+                </button>
+                <div class="time-display">
+                  <span id="currentTimeLabel">00:00</span> / <span id="totalTimeLabel">03:00</span>
+                </div>
+              </div>
+
+              <div class="right-controls">
+                <button class="btn-ctrl" id="btnToggleCc" title="Activar / Desactivar Subtítulos" style="color: var(--qualitas-cyan); font-weight: 700; font-size: 0.8rem; border: 1px solid var(--qualitas-cyan); padding: 4px 8px;">
+                  CC
+                </button>
+                <select id="playbackSpeedSelect" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 6px; font-size: 0.78rem; outline: none; cursor: pointer;">
+                  <option value="0.75">0.75x</option>
+                  <option value="1" selected>1.0x (Normal)</option>
+                  <option value="1.25">1.25x</option>
+                  <option value="1.5">1.5x</option>
+                </select>
+                <button class="btn-ctrl" id="btnFullscreen" title="Pantalla Completa">
+                  <i data-lucide="maximize"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beginner Quick Guide Below Player -->
+        <div class="guide-card">
+          <h3 style="font-size: 1.15rem; color: var(--qualitas-magenta); font-weight: 700; display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="book-open"></i>
+            Resumen Rápido para Principiantes (El Flujo de 3 Pasos)
+          </h3>
+          <p style="font-size: 0.86rem; color: var(--qualitas-gray); margin-top: 4px;">
+            Sigue estos 3 sencillos pasos cada día para conseguir citas y cotizaciones de pólizas Quálitas:
+          </p>
+
+          <div class="guide-steps-grid">
+            <div class="guide-step">
+              <span class="guide-step-num">1</span>
+              <h4>Elige tu Estado y Giro</h4>
+              <p>Usa los filtros de arriba para ver las empresas de tu ciudad (ej. Monterrey, Saltillo o Tijuana) y el giro que más te interese abordar.</p>
+            </div>
+            <div class="guide-step">
+              <span class="guide-step-num">2</span>
+              <h4>Genera el Correo con IA</h4>
+              <p>Presiona el botón de sobre morado. La Inteligencia Artificial redacta en 2 segundos una carta profesional y personalizada para el Director de Recursos Humanos o Compras.</p>
+            </div>
+            <div class="guide-step">
+              <span class="guide-step-num">3</span>
+              <h4>Envía y Registra tu Cita</h4>
+              <p>Haz clic en "Abrir en Correo" o "WhatsApp" para contactar al cliente, y luego marca el estado como "Contactado" o "Cita Agendada" con tus notas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter Navigation Playlist Sidebar -->
+      <aside class="chapters-sidebar">
+        <div class="chapters-header">
+          <span>Capítulos del Video (7)</span>
+          <span style="font-size: 0.74rem; color: var(--qualitas-magenta); font-weight: 700;">Duración: 3 min</span>
+        </div>
+        <div class="chapters-list" id="chaptersList">
+          <!-- Rendered dynamically by tutorial.js -->
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <script src="tutorial.js"></script>
+</body>
+</html>

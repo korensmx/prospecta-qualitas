@@ -71,8 +71,7 @@ function setupEventListeners() {
   document.getElementById('btnResetSingleManagement').addEventListener('click', resetSingleManagement);
 
   // Bulk Management Cleanup Actions
-  document.getElementById('btnResetAllManagement').addEventListener('click', resetAllManagement);
-  document.getElementById('btnDeleteManaged').addEventListener('click', deleteManagedProspects);
+document.getElementById('btnDeleteManaged').addEventListener('click', deleteManagedProspects);
 
   // New Prospect Form
   document.getElementById('btnSubmitNewProspect').addEventListener('click', submitNewProspect);
@@ -586,8 +585,8 @@ function scheduleWeeklyAutoSearch() {
   const now = Date.now();
   const elapsed = now - lastSearch;
 
-  if (elapsed >= ONE_WEEK_MS) {
-    // Run immediately (after a short delay to let the page load)
+  if (lastSearch === 0 || elapsed >= ONE_WEEK_MS) {
+    // Never run before, or a week has passed — run after page loads
     setTimeout(runWeeklyAutoSearch, 3000);
   } else {
     // Schedule for when the week is up

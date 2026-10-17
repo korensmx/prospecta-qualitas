@@ -51,16 +51,13 @@ function setupEventListeners() {
   document.getElementById('viewBtnKanban').addEventListener('click', () => switchView('kanban'));
 
   // Header Actions
-  document.getElementById('btnOpenAiProspector').addEventListener('click', () => openModal('modalAiProspector'));
   document.getElementById('btnOpenNewProspectModal').addEventListener('click', () => openModal('modalNewProspect'));
-  document.getElementById('btnAiStatus').addEventListener('click', openAiHealthModal);
-  document.getElementById('btnRefreshAiHealth').addEventListener('click', checkAiHealthDetailed);
   document.getElementById('btnExportCsv').addEventListener('click', () => {
     window.location.href = '/api/export';
   });
 
-  // AI Discovery Action
-  document.getElementById('btnRunAiDiscovery').addEventListener('click', runAiDiscovery);
+  // Start weekly auto-search on load
+  scheduleWeeklyAutoSearch();
 
   // Email Generator Actions
   document.getElementById('btnRegenerateEmail').addEventListener('click', () => {
@@ -529,50 +526,81 @@ function getWhatsAppUrl(prospect, resp) {
   return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 }
 
-// ---------------- AI DISCOVERY PROSPECTOR ---------------- //
+// ---------------- AI AUTO WEEKLY SEARCH ---------------- //
 
-async function runAiDiscovery() {
-  const estado = document.getElementById('aiProspectState').value;
-  const giro = document.getElementById('aiProspectGiro').value.trim();
-  const count = parseInt(document.getElementById('aiProspectCount').value, 10);
+const ESTADOS_NORTE = [
+  'Baja California', 'Baja California Sur', 'Sonora', 'Chihuahua',
+  'Coahuila', 'Durango', 'Nuevo León', 'Tamaulipas'
+];
 
-  const progress = document.getElementById('aiDiscoveryProgress');
-  const statusText = document.getElementById('aiDiscoveryStatusText');
-  const runBtn = document.getElementById('btnRunAiDiscovery');
+const WEEKLY_SEARCH_KEY = 'prospecta_last_weekly_search';
+const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 
-  progress.style.display = 'block';
-  runBtn.disabled = true;
-  statusText.textContent = 'Consultando Cascada de IA (Gemini -> Groq -> OpenRouter -> SambaNova -> NVIDIA)...';
+async function runWeeklyAutoSearch() {
+  const statusEl = document.getElementById('aiActiveProviderText');
+  if (statusEl) statusEl.textContent = 'Buscando prospectos...';
 
   try {
-    const res = await fetch('/api/generate-prospects', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ estado, giro, count })
-    });
-
-    const data = await res.json();
-    if (data.success) {
-      statusText.textContent = `¡Éxito! Se generaron y validaron ${data.addedCount} prospectos calificados con ${data.providerUsed} (${data.modelUsed}).`;
-
-      // Reload dataset & stats
-      await loadProspects();
-      await loadStats();
-
-      setTimeout(() => {
-        closeModal('modalAiProspector');
-        progress.style.display = 'none';
-        runBtn.disabled = false;
-      }, 1500);
-    } else {
-      statusText.textContent = 'Error: ' + data.error;
-      runBtn.disabled = false;
+    // Search 1 prospect per state (8 states), one at a time to avoid rate limits
+    let totalAdded = 0;
+    for (const estado of ESTADOS_NORTE) {
+      try {
+        const res = await fetch('/api/generate-prospects', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ estado, giro: '', count: 1 })
+        });
+        const data = await res.json();
+        if (data.success) {
+          totalAdded += data.addedCount || 0;
+        }
+        // Small pause between requests
+        await new Promise(r => setTimeout(r, 2000));
+      } catch (e) {
+        console.warn(`Error buscando en ${estado}:`, e);
+      }
     }
+
+    // Save timestamp
+    try { localStorage.setItem(WEEKLY_SEARCH_KEY, Date.now().toString()); } catch(e) {}
+
+    // Reload data
+    await loadProspects();
+    await loadStats();
+
+    if (statusEl) statusEl.textContent = `IA Automática Semanal ✓ (+${totalAdded} nuevos)`;
+    setTimeout(() => {
+      if (statusEl) statusEl.textContent = 'IA Automática Semanal';
+    }, 5000);
+
   } catch (err) {
-    statusText.textContent = 'Error de conexión con el servicio de IA.';
-    runBtn.disabled = false;
-    console.error(err);
+    console.error('Error en búsqueda automática semanal:', err);
+    if (statusEl) statusEl.textContent = 'IA Automática Semanal';
   }
+}
+
+function scheduleWeeklyAutoSearch() {
+  let lastSearch = 0;
+  try { lastSearch = parseInt(localStorage.getItem(WEEKLY_SEARCH_KEY) || '0', 10); } catch(e) {}
+
+  const now = Date.now();
+  const elapsed = now - lastSearch;
+
+  if (elapsed >= ONE_WEEK_MS) {
+    // Run immediately (after a short delay to let the page load)
+    setTimeout(runWeeklyAutoSearch, 3000);
+  } else {
+    // Schedule for when the week is up
+    const remaining = ONE_WEEK_MS - elapsed;
+    setTimeout(() => {
+      runWeeklyAutoSearch();
+      // Then repeat every week
+      setInterval(runWeeklyAutoSearch, ONE_WEEK_MS);
+    }, remaining);
+  }
+
+  // Also set a weekly interval for subsequent runs
+  setInterval(runWeeklyAutoSearch, ONE_WEEK_MS);
 }
 
 // ---------------- MANAGEMENT & BITÁCORA MODAL ---------------- //
@@ -809,68 +837,7 @@ async function submitNewProspect(e) {
   }
 }
 
-// ---------------- AI CASCADE HEALTH CHECK ---------------- //
-
-async function checkAiStatusSilent() {
-  try {
-    const res = await fetch('/api/ai-status');
-    const data = await res.json();
-    if (data.success) {
-      const onlineProvider = data.providers.find(p => p.active);
-      const label = document.getElementById('aiActiveProviderText');
-      if (onlineProvider) {
-        label.textContent = `IA Primaria: ${onlineProvider.name} (${onlineProvider.latencyMs}ms)`;
-      } else {
-        label.textContent = 'Cascada Multi-IA (5 Respaldos)';
-      }
-    }
-  } catch (err) {
-    // Silent fail
-  }
-}
-
-function openAiHealthModal() {
-  openModal('modalAiHealth');
-  checkAiHealthDetailed();
-}
-
-async function checkAiHealthDetailed() {
-  const container = document.getElementById('aiStatusList');
-  container.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--qualitas-gray);"><i data-lucide="refresh-cw" class="spin"></i> Probando los 5 proveedores en cascada...</div>';
-  initIcons();
-
-  try {
-    const res = await fetch('/api/ai-status');
-    const data = await res.json();
-    container.innerHTML = '';
-
-    if (data.success) {
-      data.providers.forEach((p, idx) => {
-        const item = document.createElement('div');
-        item.className = 'ai-status-item';
-        item.innerHTML = `
-          <div>
-            <div style="font-weight: 700; color: var(--qualitas-dark); display: flex; align-items: center; gap: 8px;">
-              <span style="font-size: 0.75rem; background: #E2E8F0; padding: 1px 6px; border-radius: 4px;">#${idx + 1}</span>
-              ${escapeHTML(p.name)}
-            </div>
-            <div style="font-size: 0.74rem; color: var(--qualitas-gray);">${escapeHTML(p.model || 'Estándar')}</div>
-          </div>
-          <div style="text-align: right;">
-            <div class="${p.active ? 'ai-status-online' : 'ai-status-offline'}">
-              <span style="width: 8px; height: 8px; border-radius: 50%; background: currentColor;"></span>
-              ${p.active ? 'DISPONIBLE' : 'FALLBACK'}
-            </div>
-            ${p.latencyMs ? `<div style="font-size: 0.72rem; color: #64748B;">${p.latencyMs} ms</div>` : `<div style="font-size: 0.72rem; color: #DC2626;">${p.status}</div>`}
-          </div>
-        `;
-        container.appendChild(item);
-      });
-    }
-  } catch (err) {
-    container.innerHTML = '<div style="color: #DC2626; padding: 10px;">Error al consultar estado de IA.</div>';
-  }
-}
+// (AI health modal removed — búsquedas ahora son automáticas semanales)
 
 // ---------------- UTILS & MODAL CONTROLS ---------------- //
 

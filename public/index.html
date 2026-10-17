@@ -40,17 +40,11 @@
     </div>
 
     <div class="nav-actions">
-      <!-- AI Cascade Status Indicator Button -->
-      <button class="btn btn-outline btn-sm" id="btnAiStatus" title="Verificar estado de las 5 IAs gratuitas en cascada">
+      <!-- AI Auto-Search Status Indicator -->
+      <div class="btn btn-outline btn-sm" style="cursor: default;" title="La IA busca prospectos automáticamente cada semana">
         <div class="cascade-pulse"></div>
-        <span id="aiActiveProviderText">Cascada Multi-IA Activa</span>
-      </button>
-
-      <!-- New AI Prospecting Button -->
-      <button class="btn btn-primary" id="btnOpenAiProspector">
-        <i data-lucide="sparkles"></i>
-        <span>Buscar Prospectos con IA</span>
-      </button>
+        <span id="aiActiveProviderText">IA Automática Semanal</span>
+      </div>
 
       <!-- New Manual Prospect -->
       <button class="btn btn-secondary" id="btnOpenNewProspectModal">
@@ -337,108 +331,7 @@
   </div>
 
   <!-- 2. AI Prospect Discovery Modal -->
-  <div class="modal-overlay" id="modalAiProspector" style="display: none;">
-    <div class="modal-content" style="max-width: 620px;">
-      <div class="modal-header">
-        <h3>
-          <i data-lucide="sparkles"></i>
-          Búsqueda Inteligente de Prospectos con IA
-        </h3>
-        <button class="modal-close-btn" onclick="closeModal('modalAiProspector')">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p style="font-size: 0.88rem; color: var(--qualitas-gray); margin-bottom: 16px;">
-          Nuestra inteligencia comercial consulta en cascada a los 5 proveedores gratuitos (<strong>Gemini, Groq, OpenRouter, SambaNova y NVIDIA Build</strong>) para encontrar negocios y sindicatos no cubiertos que cumplan estrictamente con los filtros de suscripción de Quálitas.
-        </p>
-
-        <div class="filter-group" style="margin-bottom: 14px;">
-          <label for="aiProspectState">Estado del Norte de México:</label>
-          <select id="aiProspectState" class="form-control">
-            <option value="Todos">Aleatorio / Cualquiera de los 8 estados</option>
-            <option value="Baja California">Baja California</option>
-            <option value="Baja California Sur">Baja California Sur</option>
-            <option value="Sonora">Sonora</option>
-            <option value="Chihuahua">Chihuahua</option>
-            <option value="Coahuila">Coahuila</option>
-            <option value="Durango">Durango</option>
-            <option value="Nuevo León">Nuevo León</option>
-            <option value="Tamaulipas">Tamaulipas</option>
-          </select>
-        </div>
-
-        <div class="filter-group" style="margin-bottom: 14px;">
-          <label for="aiProspectGiro">Giro u Organización Específica (Opcional):</label>
-          <input type="text" id="aiProspectGiro" class="form-control" placeholder="Ej. Minería, Maquiladora, Transporte de Carga, Universidad, Sindicato Metalúrgico...">
-        </div>
-
-        <div class="filter-group" style="margin-bottom: 14px;">
-          <label for="aiProspectCount">Cantidad de Prospectos a Generar:</label>
-          <select id="aiProspectCount" class="form-control">
-            <option value="3">3 Prospectos Calificados</option>
-            <option value="5">5 Prospectos Calificados</option>
-            <option value="8">8 Prospectos Calificados</option>
-          </select>
-        </div>
-
-        <div style="background: #F8FAFC; border: 1px solid var(--qualitas-border); border-radius: 8px; padding: 12px; font-size: 0.8rem; color: #475569;">
-          <strong>Reglas de Suscripción Aplicadas:</strong>
-          <ul style="margin-left: 18px; margin-top: 4px;">
-            <li>Mínimo 50 empleados o 20 vehículos de flotilla comercial.</li>
-            <li>Sindicatos autorizados (excluidos maestros SNTE/CNTE y telefonistas STRM).</li>
-            <li>Enriquecimiento automático de domicilio, teléfono, responsables y cálculo de prima.</li>
-          </ul>
-        </div>
-
-        <!-- AI Progress Indicator -->
-        <div id="aiDiscoveryProgress" style="display: none; margin-top: 16px; text-align: center;">
-          <div class="cascade-pulse" style="width: 14px; height: 14px; display: inline-block; margin-bottom: 6px;"></div>
-          <div style="font-weight: 700; color: var(--qualitas-magenta); font-size: 0.9rem;" id="aiDiscoveryStatusText">
-            Consultando Cascada Multi-IA...
-          </div>
-          <p style="font-size: 0.78rem; color: var(--qualitas-gray);">Verificando disponibilidad de proveedores y estructurando datos</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline" onclick="closeModal('modalAiProspector')">Cancelar</button>
-        <button class="btn btn-primary" id="btnRunAiDiscovery">
-          <i data-lucide="play"></i>
-          Iniciar Prospección con IA
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 3. AI Cascade Health Check Modal -->
-  <div class="modal-overlay" id="modalAiHealth" style="display: none;">
-    <div class="modal-content" style="max-width: 600px;">
-      <div class="modal-header">
-        <h3>
-          <i data-lucide="cpu"></i>
-          Estado de Cascada de Inteligencias Artificiales
-        </h3>
-        <button class="modal-close-btn" onclick="closeModal('modalAiHealth')">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p style="font-size: 0.86rem; color: var(--qualitas-gray); margin-bottom: 16px;">
-          El sistema ejecuta las consultas en orden de prioridad secuencial. Si el proveedor 1 se satura o arroja error, se conmuta automáticamente al siguiente sin interrumpir la operación:
-        </p>
-
-        <div class="ai-status-list" id="aiStatusList">
-          <!-- Populated by JavaScript -->
-          <div style="text-align: center; padding: 20px;">Cargando estado de las IAs...</div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline" onclick="closeModal('modalAiHealth')">Cerrar</button>
-        <button class="btn btn-primary" id="btnRefreshAiHealth">
-          <i data-lucide="refresh-cw"></i>
-          Probar Conexiones
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 4. Prospect Management / Bitácora Modal -->
+  <!-- 3. Prospect Management / Bitácora Modal -->
   <div class="modal-overlay" id="modalManagement" style="display: none;">
     <div class="modal-content" style="max-width: 650px;">
       <div class="modal-header">

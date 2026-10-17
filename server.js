@@ -5,11 +5,21 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3300;
-const DATA_FILE = path.join(__dirname, 'data', 'prospects.json');
+// En Vercel el entry es api/index.js, __dirname = /var/task/api
+// El archivo de datos esta en /var/task/data/prospects.json (un nivel arriba)
+// Detectamos si estamos dentro de una carpeta 'api' y subimos si es necesario
+const _serverDir = __dirname;
+const _dataInSameDir = path.join(_serverDir, 'data', 'prospects.json');
+const _dataInParentDir = path.join(_serverDir, '..', 'data', 'prospects.json');
+const DATA_FILE = fs.existsSync(_dataInSameDir) ? _dataInSameDir : _dataInParentDir;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+// Detectar raiz del proyecto (cuando se ejecuta desde api/index.js en Vercel)
+const _publicInSameDir = path.join(_serverDir, 'public');
+const _publicInParentDir = path.join(_serverDir, '..', 'public');
+const PUBLIC_DIR = fs.existsSync(_publicInSameDir) ? _publicInSameDir : _publicInParentDir;
+app.use(express.static(PUBLIC_DIR));
 
 // API keys from environment variables (NEVER hardcode in source)
 const AI_CONFIG = {
@@ -769,6 +779,27 @@ app.get('/api/ai-status', async (req, res) => {
     success: true,
     cascadeSequence: ['Google Gemini', 'Groq Cloud', 'OpenRouter', 'SambaNova', 'Build NVIDIA'],
     providers: statusResults
+  });
+});
+
+// GET /api/debug - Diagnostico de rutas y variables (solo en no-produccion o con token)
+app.get('/api/debug', (req, res) => {
+  const dataExists = fs.existsSync(DATA_FILE);
+  res.json({
+    DATA_FILE,
+    PUBLIC_DIR,
+    dataFileExists: dataExists,
+    prospectsCount: dataExists ? (() => { try { return JSON.parse(fs.readFileSync(DATA_FILE,'utf8')).length; } catch(e) { return 'parse error: '+e.message; } })() : 0,
+    envKeys: {
+      GEMINI: !!process.env.GEMINI_API_KEY,
+      GROQ: !!process.env.GROQ_API_KEY,
+      OPENROUTER: !!process.env.OPENROUTER_API_KEY,
+      SAMBANOVA: !!process.env.SAMBANOVA_API_KEY,
+      NVIDIA: !!process.env.NVIDIA_API_KEY
+    },
+    nodeVersion: process.version,
+    cwd: process.cwd(),
+    dirname: __dirname
   });
 });
 

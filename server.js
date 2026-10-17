@@ -26,22 +26,22 @@ const AI_CONFIG = {
   gemini: {
     name: 'Google Gemini',
     key: process.env.GEMINI_API_KEY || '',
-    models: ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-2.0-flash-exp']
+    models: ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-pro']
   },
   groq: {
     name: 'Groq Cloud',
     key: process.env.GROQ_API_KEY || '',
-    models: ['llama-3.3-70b-versatile', 'llama-3.1-70b-versatile', 'mixtral-8x7b-32768']
+    models: ['llama-3.3-70b-versatile', 'llama-3.1-70b-versatile', 'llama3-70b-8192']
   },
   openrouter: {
     name: 'OpenRouter',
     key: process.env.OPENROUTER_API_KEY || '',
-    models: ['google/gemma-2-9b-it:free', 'mistralai/mistral-7b-instruct:free', 'meta-llama/llama-3.2-3b-instruct:free']
+    models: ['meta-llama/llama-3.2-3b-instruct:free', 'mistralai/mistral-7b-instruct:free', 'qwen/qwen-2-7b-instruct:free']
   },
   sambanova: {
     name: 'SambaNova',
     key: process.env.SAMBANOVA_API_KEY || '',
-    models: ['Meta-Llama-3.3-70B-Instruct', 'Meta-Llama-3.1-405B-Instruct', 'DeepSeek-R1']
+    models: ['Meta-Llama-3.3-70B-Instruct', 'Meta-Llama-3.1-405B-Instruct', 'Llama-3.2-90B-Vision-Instruct']
   },
   nvidia: {
     name: 'Build NVIDIA',

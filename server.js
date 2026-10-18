@@ -26,7 +26,7 @@ const AI_CONFIG = {
   gemini: {
     name: 'Google Gemini',
     key: process.env.GEMINI_API_KEY || '',
-    models: ['gemini-2.0-flash', 'gemini-2.0-flash-lite']
+    models: ['gemini-2.5-flash', 'gemini-2.5-flash-lite-preview-06-17', 'gemini-2.0-flash']
   },
   groq: {
     name: 'Groq Cloud',

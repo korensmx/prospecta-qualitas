@@ -450,7 +450,7 @@ async function generateAiEmail(prospectId, tono) {
   if (!p) return;
 
   const contentArea = document.getElementById('emailGeneratedContent');
-  contentArea.value = 'Generando correo con Cascada Multi-IA Quálitas...';
+  contentArea.value = 'Generando correo con Gemini IA... Por favor espera unos segundos.';
 
   try {
     const res = await fetch('/api/generate-email', {
@@ -466,7 +466,8 @@ async function generateAiEmail(prospectId, tono) {
     const data = await res.json();
     if (data.success) {
       contentArea.value = data.emailText;
-      document.getElementById('emailAiSourceBadge').textContent = `Generado con ${data.providerUsed} (${data.modelUsed})`;
+      const badge = document.getElementById('emailAiSourceBadge');
+      if (badge) badge.textContent = `✓ Generado con ${data.providerUsed} (${data.modelUsed})`;
 
       // Prepare mailto and WhatsApp links
       setupEmailActionLinks(p, data.emailText);
@@ -480,7 +481,8 @@ async function generateAiEmail(prospectId, tono) {
 }
 
 function setupEmailActionLinks(prospect, emailBody) {
-  const resp = prospect.responsables?.[0] || {};
+  // Soporte para ambos formatos: array responsables[] o campos planos responsable/cargo
+  const resp = prospect.responsables?.[0] || { nombre: prospect.responsable || '', cargo: prospect.cargo || '', telefono: prospect.telefonos || '' };
   const emailTo = resp.correo || prospect.correo || '';
 
   // Extract Subject if present

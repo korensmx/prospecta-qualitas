@@ -197,95 +197,35 @@ async function callOpenAICompatible(providerName, url, apiKey, models, prompt, s
   throw lastErr || new Error(`${providerName} failed all models`);
 }
 
-// Cascading AI Engine: 1. Gemini -> 2. Groq -> 3. OpenRouter -> 4. SambaNova -> 5. NVIDIA
+// Motor IA: Solo Gemini
 async function executeAICascade(prompt, systemInstruction = '', jsonMode = false) {
-  const cascadeAttempts = [];
-  const providers = [
-    {
-      name: 'Gemini',
-      fn: () => callGemini(prompt, systemInstruction, jsonMode)
-    },
-    {
-      name: 'Groq Cloud',
-      fn: () => callOpenAICompatible(
-        'Groq',
-        'https://api.groq.com/openai/v1/chat/completions',
-        AI_CONFIG.groq.key,
-        AI_CONFIG.groq.models,
-        prompt,
-        systemInstruction,
-        jsonMode
-      )
-    },
-    {
-      name: 'OpenRouter',
-      fn: () => callOpenAICompatible(
-        'OpenRouter',
-        'https://openrouter.ai/api/v1/chat/completions',
-        AI_CONFIG.openrouter.key,
-        AI_CONFIG.openrouter.models,
-        prompt,
-        systemInstruction,
-        jsonMode
-      )
-    },
-    {
-      name: 'SambaNova',
-      fn: () => callOpenAICompatible(
-        'SambaNova',
-        'https://api.sambanova.ai/v1/chat/completions',
-        AI_CONFIG.sambanova.key,
-        AI_CONFIG.sambanova.models,
-        prompt,
-        systemInstruction,
-        jsonMode
-      )
-    },
-    {
-      name: 'Build NVIDIA',
-      fn: () => callOpenAICompatible(
-        'NVIDIA',
-        'https://integrate.api.nvidia.com/v1/chat/completions',
-        AI_CONFIG.nvidia.key,
-        AI_CONFIG.nvidia.models,
-        prompt,
-        systemInstruction,
-        jsonMode
-      )
-    }
-  ];
-
-  for (const p of providers) {
-    const start = Date.now();
-    try {
-      const result = await p.fn();
-      const latency = Date.now() - start;
-      cascadeAttempts.push({
-        provider: p.name,
-        status: 'SUCCESS',
-        model: result.model,
-        latencyMs: latency
-      });
-      return {
-        text: result.text,
-        providerUsed: p.name,
-        modelUsed: result.model,
-        latencyMs: latency,
-        cascadeLog: cascadeAttempts
-      };
-    } catch (err) {
-      const latency = Date.now() - start;
-      cascadeAttempts.push({
-        provider: p.name,
-        status: 'FAILED',
-        error: err.message,
-        latencyMs: latency
-      });
-      console.warn(`[AI Cascade] ${p.name} failed: ${err.message}. Trying next in sequence...`);
-    }
+  if (!AI_CONFIG.gemini.key) {
+    throw new Error('La llave de API de Gemini no está configurada en las variables de entorno del servidor.');
   }
-
-  throw new Error(`All 5 AI providers in cascade failed: ${JSON.stringify(cascadeAttempts)}`);
+  const start = Date.now();
+  try {
+    const result = await callGemini(prompt, systemInstruction, jsonMode);
+    return {
+      text: result.text,
+      providerUsed: 'Gemini',
+      modelUsed: result.model,
+      latencyMs: Date.now() - start,
+      cascadeLog: [{ provider: 'Gemini', status: 'SUCCESS', model: result.model, latencyMs: Date.now() - start }]
+    };
+  } catch (err) {
+    console.error('[Gemini] Error:', err.message);
+    // Mensaje de error amigable según el tipo de fallo
+    if (err.message.includes('400') || err.message.includes('INVALID_ARGUMENT') || err.message.includes('API key not valid')) {
+      throw new Error('La llave de API de Gemini no es válida. Por favor verifica la variable GEMINI_API_KEY en Vercel.');
+    }
+    if (err.message.includes('429') || err.message.includes('quota') || err.message.includes('RESOURCE_EXHAUSTED')) {
+      throw new Error('Se agotó la cuota de la API de Gemini. Intenta de nuevo en unos minutos.');
+    }
+    if (err.message.includes('timeout') || err.message.includes('AbortError')) {
+      throw new Error('La solicitud a Gemini tardó demasiado. Intenta de nuevo.');
+    }
+    throw new Error(`Error al conectar con Gemini: ${err.message}`);
+  }
 }
 
 // ---------------- API ROUTES ---------------- //
@@ -614,7 +554,11 @@ app.post('/api/generate-email', async (req, res) => {
     return res.status(404).json({ success: false, error: 'Prospecto no encontrado' });
   }
 
-  const responsable = p.responsables?.[0] || { nombre: 'Estimado Responsable', cargo: 'Director' };
+  // Soporte para ambos formatos: array responsables[] o campos planos responsable/cargo
+  const responsable = p.responsables?.[0] || {
+    nombre: p.responsable || 'Estimado Responsable',
+    cargo: p.cargo || 'Director General'
+  };
 
   let enfoqueInstruccion = '';
   if (tono === 'colectividad') {

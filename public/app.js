@@ -66,7 +66,6 @@ function setupEventListeners() {
   document.getElementById('btnCopyEmail').addEventListener('click', copyEmailToClipboard);
 
   // Management Modal
-  document.getElementById('btnAddNoteBtn').addEventListener('click', addNoteToSelectedProspect);
   document.getElementById('btnSaveManagementChanges').addEventListener('click', saveManagementChanges);
   document.getElementById('btnResetSingleManagement').addEventListener('click', resetSingleManagement);
 
@@ -679,12 +678,29 @@ async function addNoteToSelectedProspect() {
 async function saveManagementChanges() {
   if (!state.selectedProspect) return;
   const newStatus = document.getElementById('editEstadoGestion').value;
+  const noteText = document.getElementById('newNoteText').value.trim();
 
   try {
+    // 1. Guardar la nota si hay texto escrito
+    if (noteText) {
+      const noteRes = await fetch(`/api/prospects/${state.selectedProspect.id}/notes`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ texto: noteText, usuario: 'Agente Quálitas' })
+      });
+      const noteData = await noteRes.json();
+      if (noteData.success) {
+        state.selectedProspect = noteData.data;
+        const idx = state.prospects.findIndex(p => p.id === noteData.data.id);
+        if (idx !== -1) state.prospects[idx] = noteData.data;
+      }
+    }
+
+    // 2. Guardar la fase del embudo + sincronizar con Google Sheets
     const res = await fetch(`/api/prospects/${state.selectedProspect.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ estadoGestion: newStatus })
+      body: JSON.stringify({ estadoGestion: newStatus, syncSheets: true })
     });
 
     const data = await res.json();
@@ -692,12 +708,13 @@ async function saveManagementChanges() {
       const idx = state.prospects.findIndex(p => p.id === data.data.id);
       if (idx !== -1) state.prospects[idx] = data.data;
 
+      document.getElementById('newNoteText').value = '';
       closeModal('modalManagement');
       loadStats();
       applyFilters();
     }
   } catch (err) {
-    console.error('Error al actualizar estado:', err);
+    console.error('Error al guardar cambios:', err);
   }
 }
 

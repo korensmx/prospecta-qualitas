@@ -26,7 +26,7 @@ const AI_CONFIG = {
   gemini: {
     name: 'Google Gemini',
     key: process.env.GEMINI_API_KEY || '',
-    models: ['gemini-2.5-flash', 'gemini-2.5-flash-lite-preview-06-17', 'gemini-2.0-flash']
+    models: ['gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-1.5-flash']
   },
   groq: {
     name: 'Groq Cloud',
@@ -138,7 +138,7 @@ async function callGemini(prompt, systemInstruction = '', jsonMode = false) {
 
       if (!res.ok) {
         const errText = await res.text();
-        throw new Error(`HTTP ${res.status}: ${errText.slice(0, 150)}`);
+        throw new Error(`HTTP ${res.status}: ${errText.slice(0, 500)}`);
       }
 
       const json = await res.json();
@@ -183,7 +183,7 @@ async function callOpenAICompatible(providerName, url, apiKey, models, prompt, s
 
       if (!res.ok) {
         const errText = await res.text();
-        throw new Error(`HTTP ${res.status}: ${errText.slice(0, 150)}`);
+        throw new Error(`HTTP ${res.status}: ${errText.slice(0, 500)}`);
       }
 
       const json = await res.json();
@@ -745,6 +745,25 @@ app.get('/api/debug', (req, res) => {
     cwd: process.cwd(),
     dirname: __dirname
   });
+});
+
+// GET /api/gemini-models - Lista los modelos de Gemini disponibles con la API key actual
+app.get('/api/gemini-models', async (req, res) => {
+  const key = AI_CONFIG.gemini.key;
+  if (!key) return res.json({ error: 'GEMINI_API_KEY no configurada' });
+  try {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`, {
+      signal: AbortSignal.timeout(10000)
+    });
+    const json = await response.json();
+    if (!response.ok) return res.json({ error: json });
+    const models = (json.models || [])
+      .filter(m => m.supportedGenerationMethods?.includes('generateContent'))
+      .map(m => ({ name: m.name, displayName: m.displayName }));
+    res.json({ models, configuredModels: AI_CONFIG.gemini.models });
+  } catch (err) {
+    res.json({ error: err.message });
+  }
 });
 
 // GET /api/stats - Dashboard analytics

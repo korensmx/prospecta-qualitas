@@ -16,11 +16,11 @@
     "razonAfinidad": "Planta de manufactura cervecera con gran flota de distribución y más de 1,800 empleados en zona norte.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 2930000,
     "id": "fac03b8a-5010-4e80-893b-e36bd68c292e",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 2930000
   },
   {
     "razonSocial": "Honeywell Aerospace de México, S.A. de C.V.",
@@ -39,11 +39,11 @@
     "razonAfinidad": "Maquiladora aeroespacial de clase mundial con más de 2,600 empleados en Mexicali, alto potencial de colectividad.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 3540000,
     "id": "8392310b-4a5c-4f9c-9ec2-650344ef6248",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 3540000
   },
   {
     "razonSocial": "Sempra Energía de México, S.A.P.I. de C.V.",
@@ -62,11 +62,11 @@
     "razonAfinidad": "Empresa energética con extensa flota de camiones de mantenimiento y personal técnico de alta retención.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 2074000,
     "id": "f8caf1d9-ef0e-4ad7-9c5d-94b039e5bfaf",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 2074000
   },
   {
     "razonSocial": "CostaMar, S.A. de C.V. (Grupo Marítimo Los Cabos)",
@@ -85,11 +85,11 @@
     "razonAfinidad": "Empresa de logística y transporte marítimo con flota de camiones y embarcaciones en toda la península.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 1056000,
     "id": "c7d3b788-39ae-4e98-8399-4a5b09f11d28",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 1056000
   },
   {
     "razonSocial": "Grupo Questro, S.A. de C.V.",
@@ -108,11 +108,11 @@
     "razonAfinidad": "Grupo hotelero de alto nivel con amplia flota de traslados y más de 1,400 empleados en temporada alta.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 2590000,
     "id": "452342d9-27e8-46ce-b551-e838ca4f3103",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 2590000
   },
   {
     "razonSocial": "Pescadora Baja Sur, S.A. de C.V.",
@@ -131,11 +131,11 @@
     "razonAfinidad": "Empresa pesquera con flota de vehículos refrigerados y embarcaciones, fuerte necesidad de cobertura de flotilla.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 1212000,
     "id": "7a82b60d-4f18-4e03-8321-c3f8319363ac",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 1212000
   },
   {
     "razonSocial": "Automotores de Sonora, S.A. de C.V.",
@@ -154,11 +154,11 @@
     "razonAfinidad": "Planta automotriz Kia con más de 3,200 empleados y extensa flota interna de pruebas y logística.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 5520000,
     "id": "9a4fec86-50e4-455f-b688-a8b71aefd266",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 5520000
   },
   {
     "razonSocial": "Grupo Industrial Herdez, S.A.B. de C.V. - Planta Navojoa",
@@ -177,11 +177,11 @@
     "razonAfinidad": "Planta de alimentos con distribución regional, flota de 75 unidades y casi 900 empleados en el sur de Sonora.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 2094000,
     "id": "cbb2f1c2-6923-45bc-a165-2f361407a0d0",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 2094000
   },
   {
     "razonSocial": "Arizona Chemical de México, S.A. de C.V.",
@@ -200,11 +200,11 @@
     "razonAfinidad": "Planta química fronteriza con flota de distribución y personal técnico especializado de alta rotación.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 1072000,
     "id": "aad08899-da05-4e6d-9ece-439632d48922",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 1072000
   },
   {
     "razonSocial": "Grupo Cementos de Chihuahua, S.A.B. de C.V.",
@@ -223,11 +223,11 @@
     "razonAfinidad": "Cementera con extensa flota de pipas y revolvedoras (180 unidades) y más de 2,100 empleados directos.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 5040000,
     "id": "b22f9738-73ab-43ac-badb-98d0d68304fc",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 5040000
   },
   {
     "razonSocial": "Leoni Wire Inc. de México, S.A. de C.V.",
@@ -246,11 +246,11 @@
     "razonAfinidad": "Maquiladora de arneses con más de 5,500 operarios — uno de los mayores empleadores de Juárez.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 7440000,
     "id": "64531898-c6a3-4a5e-9645-ef0e882c27b7",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 7440000
   },
   {
     "razonSocial": "Grupo Chedraui, S.A.B. de C.V. - División Norte",
@@ -269,11 +269,11 @@
     "razonAfinidad": "Gran cadena retail con flota de reparto y más de 1,600 empleados en la región norte de Chihuahua.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 3180000,
     "id": "41953134-4840-4cb1-96cf-4523fdaa1784",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 3180000
   },
   {
     "razonSocial": "Altos Hornos de México, S.A.B. de C.V.",
@@ -292,11 +292,11 @@
     "razonAfinidad": "La siderúrgica más grande de México con 14,000 empleados y 350 vehículos industriales — potencial máximo de prima.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 21700000,
     "id": "4d0ae0b3-137a-4df6-876f-0f4683ef89e8",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 21700000
   },
   {
     "razonSocial": "General Motors de México, S. de R.L. de C.V. - Complejo Ramos Arizpe",
@@ -315,11 +315,11 @@
     "razonAfinidad": "Complejo automotriz con Cheyenne y Silverado, 6,800 empleados y flota interna de 200 unidades.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 10960000,
     "id": "87bb3bc0-840b-4537-9084-6091f5d0f6a2",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 10960000
   },
   {
     "razonSocial": "CHRYSLER de México, S.A. de C.V. - Planta Saltillo",
@@ -338,11 +338,11 @@
     "razonAfinidad": "Planta de motores diesel con más de 4,200 trabajadores y extensa flota de pruebas y logística.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 7280000,
     "id": "99809f20-d2c0-4eef-8115-1366f984a8b4",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 7280000
   },
   {
     "razonSocial": "Cementos del Norte, S.A. de C.V. (Holcim México Durango)",
@@ -361,11 +361,11 @@
     "razonAfinidad": "Planta cementera con 95 pipas y revolvedoras en operación permanente — alta necesidad de flotilla.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 2146000,
     "id": "b592610d-cabd-43b0-9f23-a4956cce95ba",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 2146000
   },
   {
     "razonSocial": "Madereros Industrializados de Durango, S.A. de C.V.",
@@ -384,11 +384,11 @@
     "razonAfinidad": "La industria forestal es el mayor empleador de la sierra duranguense — flota pesada de trocas y trailers.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 3260000,
     "id": "1a525d1d-dc43-4d8e-9c76-a8ff09a52486",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 3260000
   },
   {
     "razonSocial": "Compañía Minera La Ciénega, S.A. de C.V. (Grupo Fresnillo)",
@@ -407,11 +407,11 @@
     "razonAfinidad": "Mina de plata con flota pesada de camiones de acarreo y personal sindicalizado minero de alta cotización.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 2190000,
     "id": "bc581796-60e0-4825-b8dd-7340aa74e29a",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 2190000
   },
   {
     "razonSocial": "Vitro, S.A.B. de C.V.",
@@ -430,11 +430,11 @@
     "razonAfinidad": "Empresa vidriera multinacional con más de 7,500 empleados y extensa flotilla industrial en la ZMM.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 12080000,
     "id": "9fda7314-90ed-4734-8d4b-17aa8e373286",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 12080000
   },
   {
     "razonSocial": "Cydsa, S.A.B. de C.V.",
@@ -453,11 +453,11 @@
     "razonAfinidad": "Grupo químico regiomontano con plantas en varios estados — potencial de póliza grupal corporativa y flotilla.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 6100000,
     "id": "723d0770-2063-45f7-9a30-8c2fe07515b3",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 6100000
   },
   {
     "razonSocial": "Cemex, S.A.B. de C.V. - División Noreste",
@@ -476,11 +476,11 @@
     "razonAfinidad": "Cementera global con sede en Monterrey, 400 revolvedoras y pipas en NL — potencial enorme de flotilla.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 11840000,
     "id": "904c5da6-80e1-43f7-943a-7e195513f6db",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 11840000
   },
   {
     "razonSocial": "Petroquímica Cosoleacaque, S.A. de C.V. (Pemex Tamaulipas)",
@@ -499,11 +499,11 @@
     "razonAfinidad": "Terminal petroquímica con 220 pipas/auto-tanques y 1,800 trabajadores sindicalizados de alta prima.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 5240000,
     "id": "e63fdc42-dbf6-4780-931e-ca8a9002ffac",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 5240000
   },
   {
     "razonSocial": "Volkswagen de México, S.A. de C.V. - Planta Silao / Grupo VW Altamira",
@@ -522,11 +522,11 @@
     "razonAfinidad": "Centro logístico automotriz con 2,400 empleados y flota de trailers y montacargas en Puerto Altamira.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 4840000,
     "id": "ccd00c91-9686-4754-ae39-f525f684ca0e",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 4840000
   },
   {
     "razonSocial": "Sindicato Industrial de Trabajadores Mineros, Metalúrgicos y Similares - Sección 27 Tamaulipas",
@@ -545,11 +545,11 @@
     "razonAfinidad": "Sindicato industrial autorizado con 3,500 afiliados activos — seguro colectivo de alta retención por convenio.",
     "estadoGestion": "Nuevo Prospecto",
     "notas": [],
-    "primaPotencial": 4550000,
     "id": "a4516f0e-bf2c-4938-b16e-72df998fa825",
     "fechaCreacion": "2026-10-18T00:01:38.000Z",
     "fechaContacto": null,
-    "fuente": "IA Automática"
+    "fuente": "IA Automática",
+    "potencialPrimaEstimada": 4550000
   },
   {
     "id": "PROSP-SON-360140",

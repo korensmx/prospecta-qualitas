@@ -26,7 +26,7 @@ const AI_CONFIG = {
   gemini: {
     name: 'Google Gemini',
     key: process.env.GEMINI_API_KEY || '',
-    models: ['gemini-2.0-flash', 'gemini-2.0-flash-lite', 'gemini-1.5-flash-latest']
+    models: ['gemini-2.0-flash', 'gemini-2.0-flash-lite', 'gemini-1.5-flash-002', 'gemini-1.5-flash-001']
   },
   groq: {
     name: 'Groq Cloud',
@@ -116,7 +116,7 @@ async function callGemini(prompt, systemInstruction = '', jsonMode = false) {
   let lastErr = null;
   for (const model of cfg.models) {
     try {
-      const url = `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${cfg.key}`;
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${cfg.key}`;
       const body = {
         contents: [
           {
